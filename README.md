@@ -50,3 +50,27 @@ APIs for implementation ASAP:
 DATA: What can be temporary hardcoded: 
 - api key hadrdcoded- 
 - users, creds
+
+
+============================ examples of working HTTP requests:  =====================
+I) via API key 
+header:
+Authorization:   Basic NlFISkgwOUVEODJLUEgwRUVXOUhTWjVESjdNR1JQRkFDQkVDRUtFMVNOOVFLRUE0RjJBMDo=
+
+GET /api/v2/certificate
+response:  https://yadi.sk/i/fR6WfWGNiVuJo  , OK
+
+II) standard auth
+Pre-requisite: add cookie manager in scope of standard auth flow
+a) interactive login: 
+POST /api/v2/interactive/login
+params: email=ypolshchykau@exadel.com&password=Trigger_09031944
+response: https://yadi.sk/i/xU6LhM9diVuNV
+
+b) GET /api/v2/certificate 
+response: https://yadi.sk/i/owgmJk25iVuTC
+
+c) interactive logout: 
+GET /api/v2/interactive/logout 
+response: https://yadi.sk/i/uIN9lVxtiVuVe
+
