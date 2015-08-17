@@ -24,7 +24,7 @@ http://saife-git.exadel.by/
 6) my private git lab project 
 http://saife-git.exadel.by/Polschikov/saife-draft-import-from-github
 
-===============   end of URLs                  =========================================
+===============   end of URLs   =========================================
 
 
 APIs for implementation ASAP: 
@@ -52,7 +52,8 @@ DATA: What can be temporary hardcoded:
 - users, creds
 
 
-============================ examples of working HTTP requests:  =====================
+============================ examples of working HTTP requests:  =========================================================
+
 I) via API key 
 header:
 Authorization:   Basic NlFISkgwOUVEODJLUEgwRUVXOUhTWjVESjdNR1JQRkFDQkVDRUtFMVNOOVFLRUE0RjJBMDo=
