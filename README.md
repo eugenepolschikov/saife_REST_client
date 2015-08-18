@@ -79,6 +79,7 @@ response: https://yadi.sk/i/uIN9lVxtiVuVe
 
 =================   How to use SAIFE REST client API  =================
 
+```java
 import com.saife.dashboard.client.SaifeClientFactory;
 
 ...
@@ -100,3 +101,4 @@ try {
 	// you can determine what actually happened, for example, if certificate
 	// cannot be found by the given certId, SAIFE error will be NOT_FOUND.
 }
+```
