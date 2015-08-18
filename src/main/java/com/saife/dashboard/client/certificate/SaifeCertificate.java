@@ -3,10 +3,10 @@ package com.saife.dashboard.client.certificate;
 import java.util.Date;
 import java.util.List;
 
-import com.saife.dashboard.client.common.SaifeObject;
+import com.saife.dashboard.client.common.AbstractSaifeObject;
 import com.saife.dashboard.client.common.SaifeObjectType;
 
-public class SaifeCertificate extends SaifeObject {
+public class SaifeCertificate extends AbstractSaifeObject {
 
 	private static final long serialVersionUID = 1L;
 

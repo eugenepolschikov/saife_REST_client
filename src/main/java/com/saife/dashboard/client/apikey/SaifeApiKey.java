@@ -2,10 +2,10 @@ package com.saife.dashboard.client.apikey;
 
 import java.util.Date;
 
-import com.saife.dashboard.client.common.SaifeObject;
+import com.saife.dashboard.client.common.AbstractSaifeObject;
 import com.saife.dashboard.client.common.SaifeObjectType;
 
-public class SaifeApiKey extends SaifeObject {
+public class SaifeApiKey extends AbstractSaifeObject {
 
 	private static final long serialVersionUID = 1L;
 

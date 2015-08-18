@@ -4,7 +4,6 @@ import java.util.Date;
 
 import com.saife.dashboard.client.common.SaifeClientException;
 import com.saife.dashboard.client.common.SaifeDashboardException;
-import com.saife.dashboard.client.common.SaifeObjectList;
 
 /**
  * Certificate management client interface.
@@ -53,9 +52,9 @@ public interface SaifeCertificateClient {
 	/**
 	 * Returns existing certificate by fingerprint.
 	 * 
-	 * @param certId - (required) certificate Id
+	 * @param fingerprint - (required) certificate fingerprint
 	 */
-	SaifeCertificate getByFingerpring(String certId)
+	SaifeCertificate getByFingerpring(String fingerprint)
 			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
@@ -74,7 +73,7 @@ public interface SaifeCertificateClient {
 	 * @param orgId - A list of certificates (and their details) that belong to that organization
 	 * @param groupId - A list of certificates (and their details) that are in a specific group
 	 */
-	SaifeObjectList<SaifeCertificate> list(boolean includeRevokedCert, String orgId, String groupId)
+	SaifeCertificateList list(boolean includeRevokedCert, String orgId, String groupId)
 			throws SaifeClientException, SaifeDashboardException;
 	
 	/**

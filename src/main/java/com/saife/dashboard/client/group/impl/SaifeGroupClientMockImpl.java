@@ -2,13 +2,13 @@ package com.saife.dashboard.client.group.impl;
 
 import java.util.ArrayList;
 
-import com.saife.dashboard.client.common.SaifeClient;
-import com.saife.dashboard.client.common.SaifeObjectList;
-import com.saife.dashboard.client.group.SaifeGroupClient;
+import com.saife.dashboard.client.common.AbstractSaifeClient;
 import com.saife.dashboard.client.group.SaifeGroup;
+import com.saife.dashboard.client.group.SaifeGroupClient;
+import com.saife.dashboard.client.group.SaifeGroupList;
 import com.saife.dashboard.client.group.SaifeGroupMember;
 
-public class SaifeGroupClientMockImpl extends SaifeClient implements SaifeGroupClient {
+public class SaifeGroupClientMockImpl extends AbstractSaifeClient implements SaifeGroupClient {
 
 	public SaifeGroupClientMockImpl(String apiKey) {
 		super(apiKey);
@@ -32,7 +32,7 @@ public class SaifeGroupClientMockImpl extends SaifeClient implements SaifeGroupC
 	}
 
 	@Override
-	public void disband(String groupId) {
+	public void disband(String groupId, boolean sync) {
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class SaifeGroupClientMockImpl extends SaifeClient implements SaifeGroupC
 	}
 
 	@Override
-	public SaifeGroup addCertificate(String groupId, String certId) {
+	public SaifeGroup addCertificate(String groupId, String certId, boolean sync) {
 		SaifeGroup res = createMockGroupDTO();
 		res.setId(groupId);
 		SaifeGroupMember mem = new SaifeGroupMember();
@@ -54,15 +54,15 @@ public class SaifeGroupClientMockImpl extends SaifeClient implements SaifeGroupC
 	}
 
 	@Override
-	public SaifeGroup removeCertificate(String groupId, String certId) {
+	public SaifeGroup removeCertificate(String groupId, String certId, boolean sync) {
 		SaifeGroup res = createMockGroupDTO();
 		res.setId(groupId);
 		return res;
 	}
 
 	@Override
-	public SaifeObjectList<SaifeGroup> list(String kind, String organizationId) {
-		SaifeObjectList<SaifeGroup>res = new SaifeObjectList<SaifeGroup>();
+	public SaifeGroupList list(String kind, String organizationId) {
+		SaifeGroupList res = new SaifeGroupList();
 		res.setData(new ArrayList<SaifeGroup>());
 		res.getData().add(createMockGroupDTO());
 		res.setHasMore(false);

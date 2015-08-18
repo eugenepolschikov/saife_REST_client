@@ -1,9 +1,9 @@
 package com.saife.dashboard.client.user;
 
-import com.saife.dashboard.client.common.SaifeObject;
+import com.saife.dashboard.client.common.AbstractSaifeObject;
 import com.saife.dashboard.client.common.SaifeObjectType;
 
-public class SaifeUser extends SaifeObject {
+public class SaifeUser extends AbstractSaifeObject {
 
 	private static final long serialVersionUID = 1L;
 

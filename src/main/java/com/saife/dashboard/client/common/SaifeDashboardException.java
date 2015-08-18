@@ -4,29 +4,29 @@ public class SaifeDashboardException extends SaifeException {
 
 	private static final long serialVersionUID = 1L;
 
-	private SaifeDashboardErrors saifeError;
+	private SaifeDashboardError saifeError;
 
-	public SaifeDashboardException(SaifeDashboardErrors saifeError) {
+	public SaifeDashboardException(SaifeDashboardError saifeError) {
 		super();
 		this.saifeError = saifeError;
 	}
 
-	public SaifeDashboardException(SaifeDashboardErrors saifeError, String message, Throwable cause) {
+	public SaifeDashboardException(SaifeDashboardError saifeError, String message, Throwable cause) {
 		super(message, cause);
 		this.saifeError = saifeError;
 	}
 
-	public SaifeDashboardException(SaifeDashboardErrors saifeError, String message) {
+	public SaifeDashboardException(SaifeDashboardError saifeError, String message) {
 		super(message);
 		this.saifeError = saifeError;
 	}
 
-	public SaifeDashboardException(SaifeDashboardErrors saifeError, Throwable cause) {
+	public SaifeDashboardException(SaifeDashboardError saifeError, Throwable cause) {
 		super(cause);
 		this.saifeError = saifeError;
 	}
 
-	public SaifeDashboardErrors getSaifeError() {
+	public SaifeDashboardError getSaifeError() {
 		return saifeError;
 	}
 	

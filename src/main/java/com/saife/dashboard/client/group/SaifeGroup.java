@@ -3,9 +3,9 @@ package com.saife.dashboard.client.group;
 import java.util.List;
 
 import com.saife.dashboard.client.common.SaifeObjectType;
-import com.saife.dashboard.client.common.SaifeObject;
+import com.saife.dashboard.client.common.AbstractSaifeObject;
 
-public class SaifeGroup extends SaifeObject {
+public class SaifeGroup extends AbstractSaifeObject {
 
 	private static final long serialVersionUID = 1L;
 

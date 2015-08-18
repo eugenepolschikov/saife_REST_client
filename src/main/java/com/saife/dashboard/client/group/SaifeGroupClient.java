@@ -2,7 +2,6 @@ package com.saife.dashboard.client.group;
 
 import com.saife.dashboard.client.common.SaifeClientException;
 import com.saife.dashboard.client.common.SaifeDashboardException;
-import com.saife.dashboard.client.common.SaifeObjectList;
 
 /**
  * Group management client interface. 
@@ -34,8 +33,9 @@ public interface SaifeGroupClient {
 	/**
 	 * Disbands the group.
 	 * @param groupId - group Id
+	 * @param sync - (false by default) if true call will block until operation is completed
 	 */
-	void disband(String groupId)
+	void disband(String groupId, boolean sync)
 			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
@@ -49,8 +49,9 @@ public interface SaifeGroupClient {
 	 * Adds certificate to the group.
 	 * @param groupId - group Id
 	 * @param certId - certificate Id 
+	 * @param sync - (false by default) if true call will block until operation is completed
 	 */
-	SaifeGroup addCertificate(String groupId, String certId)
+	SaifeGroup addCertificate(String groupId, String certId, boolean sync)
 			throws SaifeClientException, SaifeDashboardException;
 	
 
@@ -58,8 +59,9 @@ public interface SaifeGroupClient {
 	 * Removes certificate from the group.
 	 * @param groupId - group Id
 	 * @param certId - certificate Id 
+	 * @param sync - (false by default) if true call will block until operation is completed
 	 */
-	SaifeGroup removeCertificate(String groupId, String certId)
+	SaifeGroup removeCertificate(String groupId, String certId, boolean sync)
 			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
@@ -67,7 +69,7 @@ public interface SaifeGroupClient {
 	 * @param kind
 	 * @param organizationId
 	 */
-	SaifeObjectList<SaifeGroup> list(String kind, String organizationId)
+	SaifeGroupList list(String kind, String organizationId)
 			throws SaifeClientException, SaifeDashboardException;
 	
 	/**

@@ -2,7 +2,6 @@ package com.saife.dashboard.client.endpoint;
 
 import com.saife.dashboard.client.common.SaifeClientException;
 import com.saife.dashboard.client.common.SaifeDashboardException;
-import com.saife.dashboard.client.common.SaifeObjectList;
 
 /**
  * Endpoint management client interface.
@@ -50,6 +49,6 @@ public interface SaifeEndpointClient {
 	 * @param userId
 	 * @param groupId
 	 */
-	SaifeObjectList<SaifeEndpoint>list(String userId, String groupId)
+	SaifeEndpointList list(String userId, String groupId)
 			throws SaifeClientException, SaifeDashboardException;
 }

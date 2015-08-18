@@ -2,11 +2,11 @@ package com.saife.dashboard.client.endpoint;
 
 import java.util.List;
 
-import com.saife.dashboard.client.common.SaifeObject;
+import com.saife.dashboard.client.common.AbstractSaifeObject;
 import com.saife.dashboard.client.common.SaifeObjectType;
 import com.saife.dashboard.client.user.SaifeUser;
 
-public class SaifeEndpoint extends SaifeObject {
+public class SaifeEndpoint extends AbstractSaifeObject {
 
 	private static final long serialVersionUID = 1L;
 

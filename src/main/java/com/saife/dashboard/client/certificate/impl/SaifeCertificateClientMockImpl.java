@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-import com.saife.dashboard.client.certificate.SaifeCertificateClient;
 import com.saife.dashboard.client.certificate.SaifeCertificate;
+import com.saife.dashboard.client.certificate.SaifeCertificateClient;
+import com.saife.dashboard.client.certificate.SaifeCertificateList;
 import com.saife.dashboard.client.certificate.SaifeManager;
-import com.saife.dashboard.client.common.SaifeClient;
-import com.saife.dashboard.client.common.SaifeObjectList;
+import com.saife.dashboard.client.common.AbstractSaifeClient;
 
-public class SaifeCertificateClientMockImpl extends SaifeClient implements SaifeCertificateClient {
+public class SaifeCertificateClientMockImpl extends AbstractSaifeClient implements SaifeCertificateClient {
 
 	public SaifeCertificateClientMockImpl(String apiKey) {
 		super(apiKey);
@@ -47,8 +47,8 @@ public class SaifeCertificateClientMockImpl extends SaifeClient implements Saife
 	}
 
 	@Override
-	public SaifeObjectList<SaifeCertificate> list(boolean includeRevokedCert, String orgId, String groupId) {
-		SaifeObjectList<SaifeCertificate>res = new SaifeObjectList<SaifeCertificate>();
+	public SaifeCertificateList list(boolean includeRevokedCert, String orgId, String groupId) {
+		SaifeCertificateList res = new SaifeCertificateList();
 		res.setData(new ArrayList<SaifeCertificate>());
 		res.setHasMore(false);
 		res.getData().add(createMockCertificateDTO());

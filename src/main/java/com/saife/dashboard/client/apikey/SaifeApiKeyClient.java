@@ -4,7 +4,6 @@ import java.util.Date;
 
 import com.saife.dashboard.client.common.SaifeClientException;
 import com.saife.dashboard.client.common.SaifeDashboardException;
-import com.saife.dashboard.client.common.SaifeObjectList;
 
 public interface SaifeApiKeyClient {
 
@@ -20,7 +19,7 @@ public interface SaifeApiKeyClient {
 	SaifeApiKey revoke(String apiId)
 			throws SaifeClientException, SaifeDashboardException;
 	
-	SaifeObjectList<SaifeApiKey > list(String organizationId)
+	SaifeApiKeyList list(String organizationId)
 			throws SaifeClientException, SaifeDashboardException;
 	
 }

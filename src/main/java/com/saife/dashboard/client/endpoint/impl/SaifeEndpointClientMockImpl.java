@@ -3,15 +3,15 @@ package com.saife.dashboard.client.endpoint.impl;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.saife.dashboard.client.common.AbstractSaifeClient;
 import com.saife.dashboard.client.common.SaifeClientException;
-import com.saife.dashboard.client.common.SaifeClient;
 import com.saife.dashboard.client.common.SaifeDashboardException;
-import com.saife.dashboard.client.common.SaifeObjectList;
-import com.saife.dashboard.client.endpoint.SaifeEndpointClient;
 import com.saife.dashboard.client.endpoint.SaifeEndpoint;
+import com.saife.dashboard.client.endpoint.SaifeEndpointClient;
+import com.saife.dashboard.client.endpoint.SaifeEndpointList;
 import com.saife.dashboard.client.user.SaifeUser;
 
-public class SaifeEndpointClientMockImpl extends SaifeClient implements SaifeEndpointClient {
+public class SaifeEndpointClientMockImpl extends AbstractSaifeClient implements SaifeEndpointClient {
 
 	public SaifeEndpointClientMockImpl(String apiKey) {
 		super(apiKey);
@@ -38,8 +38,8 @@ public class SaifeEndpointClientMockImpl extends SaifeClient implements SaifeEnd
 	}
 
 	@Override
-	public SaifeObjectList<SaifeEndpoint> list(String userId, String groupId) throws SaifeClientException, SaifeDashboardException {
-		SaifeObjectList<SaifeEndpoint>res = new SaifeObjectList<SaifeEndpoint>();
+	public SaifeEndpointList list(String userId, String groupId) throws SaifeClientException, SaifeDashboardException {
+		SaifeEndpointList res = new SaifeEndpointList();
 		res.setData(new ArrayList<SaifeEndpoint>());
 		res.getData().add(createMockEndpointDTO());
 		return res;
