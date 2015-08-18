@@ -89,7 +89,7 @@ String certId = "tourCertificateId";
 
 SaifeClientFactory factory = SaifeClientFactory.getInstance(apiKey);
 
-CertificateClient certClient = factory.getCertificateClient();
+SaifeCertificateClient certClient = factory.getCertificateClient();
 try {
 	certClient.resetPassword(certId);
 } catch (ClientException ce) {

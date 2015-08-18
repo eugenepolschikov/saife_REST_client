@@ -1,17 +1,17 @@
 package com.saife.dashboard.client.group;
 
-import com.saife.dashboard.client.common.SaifeObjects;
-import com.saife.dashboard.client.common.SaifeDTO;
+import com.saife.dashboard.client.common.SaifeObjectType;
+import com.saife.dashboard.client.common.SaifeObject;
 
-public class GroupMemberDTO extends SaifeDTO {
+public class SaifeGroupMember extends SaifeObject {
 
 	private static final long serialVersionUID = 1L;
 
 	private String kind;
 
-	public GroupMemberDTO() {
+	public SaifeGroupMember() {
 		super();
-		setObject(SaifeObjects.member);
+		setObject(SaifeObjectType.member);
 	}
 	
 	public String getKind() {

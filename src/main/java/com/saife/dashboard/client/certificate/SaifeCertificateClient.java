@@ -2,9 +2,9 @@ package com.saife.dashboard.client.certificate;
 
 import java.util.Date;
 
-import com.saife.dashboard.client.common.ClientException;
-import com.saife.dashboard.client.common.SaifeException;
-import com.saife.dashboard.client.common.SaifeListDTO;
+import com.saife.dashboard.client.common.SaifeClientException;
+import com.saife.dashboard.client.common.SaifeDashboardException;
+import com.saife.dashboard.client.common.SaifeObjectList;
 
 /**
  * Certificate management client interface.
@@ -14,7 +14,7 @@ import com.saife.dashboard.client.common.SaifeListDTO;
  * 
  * @see http://saifeinc.com/developers/libraries/management/?shell#certificate
  */
-public interface CertificateClient {
+public interface SaifeCertificateClient {
 
 	/**
 	 * Creates a new certificate.
@@ -27,8 +27,8 @@ public interface CertificateClient {
 	 * @param expireTime - (optional) The expiration timestamp; if not specified than a default will be used
 	 * @param name - (optional) The certificate name. The default is the user’s first and last names concatenated with a unique ID.
 	 */
-	CertificateDTO create(String pkcs10csr, String capabilities, String userId, String organizationId, String endpointId, Date expireTime, String name)
-			throws ClientException, SaifeException;
+	SaifeCertificate create(String pkcs10csr, String capabilities, String userId, String organizationId, String endpointId, Date expireTime, String name)
+			throws SaifeClientException, SaifeDashboardException;
 
 	/**
 	 * Updates the existing certificate by Id. 
@@ -39,24 +39,24 @@ public interface CertificateClient {
 	 * @param expireTime - (optional) The expiration timestamp; if not specified than a default will be used
 	 * @param name - (optional) The certificate name. The default is the user’s first and last names concatenated with a unique ID.
 	*/
-	CertificateDTO update(String certId, String organizationId, String endpointId, Date expireTime, String name)
-			throws ClientException, SaifeException;
+	SaifeCertificate update(String certId, String organizationId, String endpointId, Date expireTime, String name)
+			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
 	 * Returns existing certificate by the given Id.
 	 * 
 	 * @param certId - (required) certificate Id
 	 */
-	CertificateDTO getById(String certId)
-			throws ClientException, SaifeException;
+	SaifeCertificate getById(String certId)
+			throws SaifeClientException, SaifeDashboardException;
 
 	/**
 	 * Returns existing certificate by fingerprint.
 	 * 
 	 * @param certId - (required) certificate Id
 	 */
-	CertificateDTO getByFingerpring(String certId)
-			throws ClientException, SaifeException;
+	SaifeCertificate getByFingerpring(String certId)
+			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
 	 * Revokes certificate by Id.
@@ -64,8 +64,8 @@ public interface CertificateClient {
 	 * @param certId - (required) certificate Id
 	 * @param revokeTime - (optional) The revoke timestamp; if not specified than a default will be used
 	 */
-	CertificateDTO revoke(String certId, Date revokeTime)
-			throws ClientException, SaifeException;
+	SaifeCertificate revoke(String certId, Date revokeTime)
+			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
 	 * 
@@ -74,15 +74,15 @@ public interface CertificateClient {
 	 * @param orgId - A list of certificates (and their details) that belong to that organization
 	 * @param groupId - A list of certificates (and their details) that are in a specific group
 	 */
-	SaifeListDTO<CertificateDTO> list(boolean includeRevokedCert, String orgId, String groupId)
-			throws ClientException, SaifeException;
+	SaifeObjectList<SaifeCertificate> list(boolean includeRevokedCert, String orgId, String groupId)
+			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
 	 * Resets password of certificate.
 	 * 
 	 * @param certId - (required) certificate Id
 	 */
-	CertificateDTO resetPassword(String certId)
-			throws ClientException, SaifeException;
+	SaifeCertificate resetPassword(String certId)
+			throws SaifeClientException, SaifeDashboardException;
 	
 }

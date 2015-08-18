@@ -2,10 +2,10 @@ package com.saife.dashboard.client.apikey;
 
 import java.util.Date;
 
-import com.saife.dashboard.client.common.SaifeDTO;
-import com.saife.dashboard.client.common.SaifeObjects;
+import com.saife.dashboard.client.common.SaifeObject;
+import com.saife.dashboard.client.common.SaifeObjectType;
 
-public class ApiKeyDTO extends SaifeDTO {
+public class SaifeApiKey extends SaifeObject {
 
 	private static final long serialVersionUID = 1L;
 
@@ -16,9 +16,9 @@ public class ApiKeyDTO extends SaifeDTO {
 	private Date createTime;
 	private Date expireTime;
 	
-	public ApiKeyDTO() {
+	public SaifeApiKey() {
 		super();
-		setObject(SaifeObjects.apikey);
+		setObject(SaifeObjectType.apikey);
 	}
 	public String getApiKey() {
 		return apiKey;

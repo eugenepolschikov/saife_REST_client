@@ -1,6 +1,6 @@
 package com.saife.dashboard.client.common;
 
-public enum SaifeObjects {
+public enum SaifeObjectType {
 	apikey,
 	cert_config,
 	certificate,

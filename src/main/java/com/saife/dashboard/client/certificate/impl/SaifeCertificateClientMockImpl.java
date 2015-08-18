@@ -6,62 +6,62 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-import com.saife.dashboard.client.certificate.CertificateClient;
-import com.saife.dashboard.client.certificate.CertificateDTO;
-import com.saife.dashboard.client.certificate.ManagerDTO;
+import com.saife.dashboard.client.certificate.SaifeCertificateClient;
+import com.saife.dashboard.client.certificate.SaifeCertificate;
+import com.saife.dashboard.client.certificate.SaifeManager;
 import com.saife.dashboard.client.common.SaifeClient;
-import com.saife.dashboard.client.common.SaifeListDTO;
+import com.saife.dashboard.client.common.SaifeObjectList;
 
-public class CertificateClientMockImpl extends SaifeClient implements CertificateClient {
+public class SaifeCertificateClientMockImpl extends SaifeClient implements SaifeCertificateClient {
 
-	public CertificateClientMockImpl(String apiKey) {
+	public SaifeCertificateClientMockImpl(String apiKey) {
 		super(apiKey);
 	}
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000+0000");
 	
 	@Override
-	public CertificateDTO create(String pkcs10csr, String capabilities, String userId, String organizationId,
+	public SaifeCertificate create(String pkcs10csr, String capabilities, String userId, String organizationId,
 			String endpointId, Date expireTime, String name) {
 		return createMockCertificateDTO();
 	}
 
 	@Override
-	public CertificateDTO update(String certId, String organizationId, String endpointId, Date expireTime, String name) {
+	public SaifeCertificate update(String certId, String organizationId, String endpointId, Date expireTime, String name) {
 		return createMockCertificateDTO();
 	}
 
 	@Override
-	public CertificateDTO getById(String certId) {
+	public SaifeCertificate getById(String certId) {
 		return createMockCertificateDTO();
 	}
 
 	@Override
-	public CertificateDTO getByFingerpring(String certId) {
+	public SaifeCertificate getByFingerpring(String certId) {
 		return createMockCertificateDTO();
 	}
 
 	@Override
-	public CertificateDTO revoke(String certId, Date revokeTime) {
+	public SaifeCertificate revoke(String certId, Date revokeTime) {
 		return createMockCertificateDTO();
 	}
 
 	@Override
-	public SaifeListDTO<CertificateDTO> list(boolean includeRevokedCert, String orgId, String groupId) {
-		SaifeListDTO<CertificateDTO>res = new SaifeListDTO<CertificateDTO>();
-		res.setData(new ArrayList<CertificateDTO>());
+	public SaifeObjectList<SaifeCertificate> list(boolean includeRevokedCert, String orgId, String groupId) {
+		SaifeObjectList<SaifeCertificate>res = new SaifeObjectList<SaifeCertificate>();
+		res.setData(new ArrayList<SaifeCertificate>());
 		res.setHasMore(false);
 		res.getData().add(createMockCertificateDTO());
 		return res;
 	}
 
 	@Override
-	public CertificateDTO resetPassword(String certId) {
+	public SaifeCertificate resetPassword(String certId) {
 		return createMockCertificateDTO();
 	}
 
-	private CertificateDTO createMockCertificateDTO() {
-		CertificateDTO res = new CertificateDTO();
+	private SaifeCertificate createMockCertificateDTO() {
+		SaifeCertificate res = new SaifeCertificate();
 		res.setCapabilities(Arrays.asList("com::saife::crypto::capability::AES_128_BIT","com::saife::demo::echo"));
 		res.setCertificateLeaf("MIIBuzCCAUCgAwIBAgIGAU8/miu7MAoGCCqGSM49BAMCMCExHzAdBgNVBAMTFmRhc2hib2FyZC5zYWlmZWluYy5jb20wHhcNMTUwODE3MjEwMDAwWhcNMTUxMDA4MjEwMDAwWjASMRAwDgYDVQQDEwdkZW1vQXBwMHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEh8vDMvdPPLDlSeH5GRlC7KNf6DP6Cksdy35chIgAfngTa5bZs48TQFmyZtH65pTCLEOdoqfil8shy6o95tOqmzxI3GkTrb8aeBM7w6218Va2HtzjamzWVPcvi9Txj69Qo1YwVDBSBggrBgEFBQcDMARGMEQwD2EDAgEBYgMBAQBjAwEBADAPYQMCAQRiAwEBAGMDAQEAMA9hAwIBAmIDAQEAYwMBAQAwD2EDAgEDYgMBAQBjAwEBADAKBggqhkjOPQQDAgNpADBmAjEA1+MSkZmK04f+zO4gOVNI0zc7WN5GGzVACfJz80RcisfN/Z9tKE9o3BTQA9hArEmHAjEAvWsvVrOWiITsxqq8S0rM/nZHFajt0Ni8ivwRiR1VyunZJr0tAAbwheziYmZqPE0f");
 		res.setCreateTime(parseDate("2015-08-10T09:31:02.000+0000"));
@@ -71,7 +71,7 @@ public class CertificateClientMockImpl extends SaifeClient implements Certificat
 		res.setId("cer_000072G");
 		res.setLicenseId(null);
 		
-		ManagerDTO manager = new ManagerDTO();
+		SaifeManager manager = new SaifeManager();
 		manager.setId("man_0000008");
 		manager.setCreateTime(parseDate("2015-02-19T02:15:04.000+0000"));
 		manager.setExpireTime(parseDate("2015-02-19T02:15:04.000+0000"));

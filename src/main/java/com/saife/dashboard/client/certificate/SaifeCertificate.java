@@ -3,10 +3,10 @@ package com.saife.dashboard.client.certificate;
 import java.util.Date;
 import java.util.List;
 
-import com.saife.dashboard.client.common.SaifeDTO;
-import com.saife.dashboard.client.common.SaifeObjects;
+import com.saife.dashboard.client.common.SaifeObject;
+import com.saife.dashboard.client.common.SaifeObjectType;
 
-public class CertificateDTO extends SaifeDTO {
+public class SaifeCertificate extends SaifeObject {
 
 	private static final long serialVersionUID = 1L;
 
@@ -17,7 +17,7 @@ public class CertificateDTO extends SaifeDTO {
     private Date		expireTime;
     private String		fingerprint;
     private String		licenseId;
-    private ManagerDTO 	manager;
+    private SaifeManager 	manager;
     private String		managerId;
     private Date		modifyTime;
     private String		organizationId;
@@ -25,9 +25,9 @@ public class CertificateDTO extends SaifeDTO {
     private String		name;
     private String		userId;
     
-    public CertificateDTO() {
+    public SaifeCertificate() {
 		super();
-		setObject(SaifeObjects.certificate);
+		setObject(SaifeObjectType.certificate);
 	}
 	public List<String> getCapabilities() {
 		return capabilities;
@@ -71,10 +71,10 @@ public class CertificateDTO extends SaifeDTO {
 	public void setLicenseId(String licenseId) {
 		this.licenseId = licenseId;
 	}
-	public ManagerDTO getManager() {
+	public SaifeManager getManager() {
 		return manager;
 	}
-	public void setManager(ManagerDTO manager) {
+	public void setManager(SaifeManager manager) {
 		this.manager = manager;
 	}
 	public String getManagerId() {

@@ -1,5 +1,5 @@
 package com.saife.dashboard.client.user.profile;
 
-public interface UserProfileClient {
+public interface SaifeUserProfileClient {
 
 }

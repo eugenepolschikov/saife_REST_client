@@ -1,11 +1,11 @@
 package com.saife.dashboard.client;
 
-import com.saife.dashboard.client.certificate.CertificateClient;
-import com.saife.dashboard.client.certificate.impl.CertificateClientMockImpl;
-import com.saife.dashboard.client.endpoint.EndpointClient;
-import com.saife.dashboard.client.endpoint.impl.EndpointClientMockImpl;
-import com.saife.dashboard.client.group.GroupClient;
-import com.saife.dashboard.client.group.impl.GroupClientMockImpl;
+import com.saife.dashboard.client.certificate.SaifeCertificateClient;
+import com.saife.dashboard.client.certificate.impl.SaifeCertificateClientMockImpl;
+import com.saife.dashboard.client.endpoint.SaifeEndpointClient;
+import com.saife.dashboard.client.endpoint.impl.SaifeEndpointClientMockImpl;
+import com.saife.dashboard.client.group.SaifeGroupClient;
+import com.saife.dashboard.client.group.impl.SaifeGroupClientMockImpl;
 
 public class SaifeClientFactory {
 
@@ -19,16 +19,16 @@ public class SaifeClientFactory {
 		return new SaifeClientFactory(apiKey);
 	}
 	
-	public CertificateClient getCertificateClient() {
-		return new CertificateClientMockImpl(apiKey);
+	public SaifeCertificateClient getCertificateClient() {
+		return new SaifeCertificateClientMockImpl(apiKey);
 	}
 	
-	public GroupClient getGroupClient() {
-		return new GroupClientMockImpl(apiKey);
+	public SaifeGroupClient getGroupClient() {
+		return new SaifeGroupClientMockImpl(apiKey);
 	} 
 
-	public EndpointClient getEndpointClient() {
-		return new EndpointClientMockImpl(apiKey);
+	public SaifeEndpointClient getEndpointClient() {
+		return new SaifeEndpointClientMockImpl(apiKey);
 	} 
 
 }

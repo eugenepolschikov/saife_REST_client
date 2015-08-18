@@ -2,20 +2,21 @@ package com.saife.dashboard.client.endpoint;
 
 import java.util.List;
 
-import com.saife.dashboard.client.common.SaifeDTO;
-import com.saife.dashboard.client.common.SaifeObjects;
+import com.saife.dashboard.client.common.SaifeObject;
+import com.saife.dashboard.client.common.SaifeObjectType;
+import com.saife.dashboard.client.user.SaifeUser;
 
-public class EndpointDTO extends SaifeDTO {
+public class SaifeEndpoint extends SaifeObject {
 
 	private static final long serialVersionUID = 1L;
 
 	private String name;
-	private UserDTO user;
+	private SaifeUser user;
 	private List<String> certificates;
 	
-	public EndpointDTO() {
+	public SaifeEndpoint() {
 		super();
-		setObject(SaifeObjects.endpoint);
+		setObject(SaifeObjectType.endpoint);
 	}
 
 	public String getName() {
@@ -26,11 +27,11 @@ public class EndpointDTO extends SaifeDTO {
 		this.name = name;
 	}
 
-	public UserDTO getUser() {
+	public SaifeUser getUser() {
 		return user;
 	}
 
-	public void setUser(UserDTO user) {
+	public void setUser(SaifeUser user) {
 		this.user = user;
 	}
 

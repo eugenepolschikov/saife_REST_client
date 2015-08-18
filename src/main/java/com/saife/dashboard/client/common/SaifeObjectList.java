@@ -2,7 +2,7 @@ package com.saife.dashboard.client.common;
 
 import java.util.List;
 
-public class SaifeListDTO <T> extends SaifeDTO {
+public class SaifeObjectList <T> extends SaifeObject {
 
 	private static final long serialVersionUID = 1L;
 

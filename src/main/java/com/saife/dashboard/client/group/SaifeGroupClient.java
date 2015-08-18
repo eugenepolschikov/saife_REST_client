@@ -1,8 +1,8 @@
 package com.saife.dashboard.client.group;
 
-import com.saife.dashboard.client.common.ClientException;
-import com.saife.dashboard.client.common.SaifeException;
-import com.saife.dashboard.client.common.SaifeListDTO;
+import com.saife.dashboard.client.common.SaifeClientException;
+import com.saife.dashboard.client.common.SaifeDashboardException;
+import com.saife.dashboard.client.common.SaifeObjectList;
 
 /**
  * Group management client interface. 
@@ -12,7 +12,7 @@ import com.saife.dashboard.client.common.SaifeListDTO;
  * 
  * @see http://saifeinc.com/developers/libraries/management/?shell#group
  */
-public interface GroupClient {
+public interface SaifeGroupClient {
 
 	/**
 	 * Creates a new group.
@@ -20,38 +20,38 @@ public interface GroupClient {
 	 * @param name - (required) the group’s name
 	 * @param organizationId - (conditional) the ID of the organization is only required during interactive login sessions
 	 */
-	GroupDTO create(String kind, String name, String organizationId)
-			throws ClientException, SaifeException;
+	SaifeGroup create(String kind, String name, String organizationId)
+			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
 	 * Changes the group.
 	 * @param groupId - group Id
 	 * @param name - (required) The group’s name
 	 */
-	GroupDTO edit(String groupId, String name)
-			throws ClientException, SaifeException;
+	SaifeGroup edit(String groupId, String name)
+			throws SaifeClientException, SaifeDashboardException;
 
 	/**
 	 * Disbands the group.
 	 * @param groupId - group Id
 	 */
 	void disband(String groupId)
-			throws ClientException, SaifeException;
+			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
 	 * Returns Group object containing the group details.
 	 * @param groupId - group Id
 	 */
-	GroupDTO details(String groupId)
-			throws ClientException, SaifeException;
+	SaifeGroup details(String groupId)
+			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
 	 * Adds certificate to the group.
 	 * @param groupId - group Id
 	 * @param certId - certificate Id 
 	 */
-	GroupDTO addCertificate(String groupId, String certId)
-			throws ClientException, SaifeException;
+	SaifeGroup addCertificate(String groupId, String certId)
+			throws SaifeClientException, SaifeDashboardException;
 	
 
 	/**
@@ -59,23 +59,23 @@ public interface GroupClient {
 	 * @param groupId - group Id
 	 * @param certId - certificate Id 
 	 */
-	GroupDTO removeCertificate(String groupId, String certId)
-			throws ClientException, SaifeException;
+	SaifeGroup removeCertificate(String groupId, String certId)
+			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
 	 * Returns list of groups which matched to queryable arguments. 
 	 * @param kind
 	 * @param organizationId
 	 */
-	SaifeListDTO<GroupDTO> list(String kind, String organizationId)
-			throws ClientException, SaifeException;
+	SaifeObjectList<SaifeGroup> list(String kind, String organizationId)
+			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
 	 * Merges two groups into one.
 	 * @param groupId1 - first group Id
 	 * @param groupId2 - second group Id
 	 */
-	GroupDTO merge(String groupId1, String groupId2)
-			throws ClientException, SaifeException;
+	SaifeGroup merge(String groupId1, String groupId2)
+			throws SaifeClientException, SaifeDashboardException;
 	
 }

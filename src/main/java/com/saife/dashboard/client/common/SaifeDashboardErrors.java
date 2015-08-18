@@ -1,6 +1,6 @@
 package com.saife.dashboard.client.common;
 
-public enum SaifeErrors {
+public enum SaifeDashboardErrors {
 
 	BAD_REQUEST			 (400, "Bad Request", "Your request is just wrong."),
 	UNAUTHORIZED		 (401, "Unauthorized", "Your authentication is invalid."),
@@ -17,7 +17,7 @@ public enum SaifeErrors {
 	private int code;
 	private String error, description;
 	
-	SaifeErrors(int code, String error, String description) {
+	SaifeDashboardErrors(int code, String error, String description) {
 		this.code = code;
 		this.error = error;
 		this.description = description;

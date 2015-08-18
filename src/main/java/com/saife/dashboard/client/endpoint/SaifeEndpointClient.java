@@ -1,8 +1,8 @@
 package com.saife.dashboard.client.endpoint;
 
-import com.saife.dashboard.client.common.ClientException;
-import com.saife.dashboard.client.common.SaifeException;
-import com.saife.dashboard.client.common.SaifeListDTO;
+import com.saife.dashboard.client.common.SaifeClientException;
+import com.saife.dashboard.client.common.SaifeDashboardException;
+import com.saife.dashboard.client.common.SaifeObjectList;
 
 /**
  * Endpoint management client interface.
@@ -12,15 +12,15 @@ import com.saife.dashboard.client.common.SaifeListDTO;
  * 
  * @see http://saifeinc.com/developers/libraries/management/?shell#endpoint
  */
-public interface EndpointClient {
+public interface SaifeEndpointClient {
 	
 	/**
 	 * Creates a new endpoint. 
 	 * @param name - name of endpoint
 	 * @param userId - user Id
 	 */
-	EndpointDTO create(String name, String userId)
-			throws ClientException, SaifeException;
+	SaifeEndpoint create(String name, String userId)
+			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
 	 * Updates the endpoint.
@@ -28,28 +28,28 @@ public interface EndpointClient {
 	 * @param name - name of endpoint
 	 * @param userId - user Id
 	 */
-	EndpointDTO update(String endpointId, String name, String userId)
-			throws ClientException, SaifeException;
+	SaifeEndpoint update(String endpointId, String name, String userId)
+			throws SaifeClientException, SaifeDashboardException;
 
 	/**
 	 * Retrieves the endpoint. 
 	 * @param endpointId - endpoint Id
 	 */
-	EndpointDTO retrieve(String endpointId)
-			throws ClientException, SaifeException;
+	SaifeEndpoint retrieve(String endpointId)
+			throws SaifeClientException, SaifeDashboardException;
 
 	/**
 	 * Removes the endpoint.
 	 * @param endpointId - endpoint Id
 	 */
-	EndpointDTO remove(String endpointId)
-			throws ClientException, SaifeException;
+	SaifeEndpoint remove(String endpointId)
+			throws SaifeClientException, SaifeDashboardException;
 	
 	/**
 	 * Returns list of endpoints matched to input criteria. 
 	 * @param userId
 	 * @param groupId
 	 */
-	SaifeListDTO<EndpointDTO>list(String userId, String groupId)
-			throws ClientException, SaifeException;
+	SaifeObjectList<SaifeEndpoint>list(String userId, String groupId)
+			throws SaifeClientException, SaifeDashboardException;
 }

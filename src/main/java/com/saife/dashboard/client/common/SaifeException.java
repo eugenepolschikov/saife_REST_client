@@ -1,33 +1,23 @@
 package com.saife.dashboard.client.common;
 
-public class SaifeException extends DashboardException {
+public class SaifeException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	private SaifeErrors saifeError;
-
-	public SaifeException(SaifeErrors saifeError) {
+	public SaifeException() {
 		super();
-		this.saifeError = saifeError;
 	}
 
-	public SaifeException(SaifeErrors saifeError, String message, Throwable cause) {
+	public SaifeException(String message, Throwable cause) {
 		super(message, cause);
-		this.saifeError = saifeError;
 	}
 
-	public SaifeException(SaifeErrors saifeError, String message) {
+	public SaifeException(String message) {
 		super(message);
-		this.saifeError = saifeError;
 	}
 
-	public SaifeException(SaifeErrors saifeError, Throwable cause) {
+	public SaifeException(Throwable cause) {
 		super(cause);
-		this.saifeError = saifeError;
-	}
-
-	public SaifeErrors getSaifeError() {
-		return saifeError;
 	}
 	
 }

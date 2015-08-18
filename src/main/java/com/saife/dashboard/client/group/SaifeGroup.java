@@ -2,21 +2,21 @@ package com.saife.dashboard.client.group;
 
 import java.util.List;
 
-import com.saife.dashboard.client.common.SaifeObjects;
-import com.saife.dashboard.client.common.SaifeDTO;
+import com.saife.dashboard.client.common.SaifeObjectType;
+import com.saife.dashboard.client.common.SaifeObject;
 
-public class GroupDTO extends SaifeDTO {
+public class SaifeGroup extends SaifeObject {
 
 	private static final long serialVersionUID = 1L;
 
 	private String kind;
     private String name;
     private String organizationId;
-    private List<GroupMemberDTO>members;
+    private List<SaifeGroupMember>members;
 	
-	public GroupDTO() {
+	public SaifeGroup() {
 		super();
-		setObject(SaifeObjects.group);
+		setObject(SaifeObjectType.group);
 	}
 
 	public String getKind() {
@@ -43,11 +43,11 @@ public class GroupDTO extends SaifeDTO {
 		this.organizationId = organizationId;
 	}
 
-	public List<GroupMemberDTO> getMembers() {
+	public List<SaifeGroupMember> getMembers() {
 		return members;
 	}
 
-	public void setMembers(List<GroupMemberDTO> members) {
+	public void setMembers(List<SaifeGroupMember> members) {
 		this.members = members;
 	}
 

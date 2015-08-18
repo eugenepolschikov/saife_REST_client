@@ -2,10 +2,10 @@ package com.saife.dashboard.client.certificate;
 
 import java.util.Date;
 
-import com.saife.dashboard.client.common.SaifeObjects;
-import com.saife.dashboard.client.common.SaifeDTO;
+import com.saife.dashboard.client.common.SaifeObjectType;
+import com.saife.dashboard.client.common.SaifeObject;
 
-public class ManagerDTO extends SaifeDTO {
+public class SaifeManager extends SaifeObject {
 
 	private static final long serialVersionUID = 1L;
 
@@ -14,9 +14,9 @@ public class ManagerDTO extends SaifeDTO {
     private Date	expireTime;
     private String 	fingerprint;
 
-    public ManagerDTO() {
+    public SaifeManager() {
     	super();
-    	setObject(SaifeObjects.manager);
+    	setObject(SaifeObjectType.manager);
     }
     
     public String getCertificateChain() {

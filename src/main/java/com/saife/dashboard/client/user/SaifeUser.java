@@ -1,9 +1,9 @@
-package com.saife.dashboard.client.endpoint;
+package com.saife.dashboard.client.user;
 
-import com.saife.dashboard.client.common.SaifeDTO;
-import com.saife.dashboard.client.common.SaifeObjects;
+import com.saife.dashboard.client.common.SaifeObject;
+import com.saife.dashboard.client.common.SaifeObjectType;
 
-public class UserDTO extends SaifeDTO {
+public class SaifeUser extends SaifeObject {
 
 	private static final long serialVersionUID = 1L;
 
@@ -12,9 +12,9 @@ public class UserDTO extends SaifeDTO {
     private String lastName;
     private String profileImageUrl;
 	
-	public UserDTO() {
+	public SaifeUser() {
 		super();
-		setObject(SaifeObjects.user);
+		setObject(SaifeObjectType.user);
 	}
 
 	public String getFirstName() {
