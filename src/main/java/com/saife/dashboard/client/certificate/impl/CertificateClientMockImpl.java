@@ -9,9 +9,14 @@ import java.util.Date;
 import com.saife.dashboard.client.certificate.CertificateClient;
 import com.saife.dashboard.client.certificate.CertificateDTO;
 import com.saife.dashboard.client.certificate.ManagerDTO;
+import com.saife.dashboard.client.common.SaifeClient;
 import com.saife.dashboard.client.common.SaifeListDTO;
 
-public class CertificateClientMockImpl implements CertificateClient {
+public class CertificateClientMockImpl extends SaifeClient implements CertificateClient {
+
+	public CertificateClientMockImpl(String apiKey) {
+		super(apiKey);
+	}
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000+0000");
 	

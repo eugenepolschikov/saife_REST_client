@@ -1,11 +1,16 @@
 package com.saife.dashboard.client.common;
 
 public enum SaifeObjects {
-	manager,
+	apikey,
+	cert_config,
 	certificate,
-	list,
-	group,
-	member,
 	endpoint,
-	user
+	group,
+	list,
+	manager,
+	member,
+	organization,
+	role,
+	user,
+	verification
 }

@@ -4,13 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import com.saife.dashboard.client.common.ClientException;
+import com.saife.dashboard.client.common.SaifeClient;
 import com.saife.dashboard.client.common.SaifeException;
 import com.saife.dashboard.client.common.SaifeListDTO;
 import com.saife.dashboard.client.endpoint.EndpointClient;
 import com.saife.dashboard.client.endpoint.EndpointDTO;
 import com.saife.dashboard.client.endpoint.UserDTO;
 
-public class EndpointClientMockImpl implements EndpointClient {
+public class EndpointClientMockImpl extends SaifeClient implements EndpointClient {
+
+	public EndpointClientMockImpl(String apiKey) {
+		super(apiKey);
+	}
 
 	@Override
 	public EndpointDTO create(String name, String userId) throws ClientException, SaifeException {

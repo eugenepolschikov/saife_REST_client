@@ -2,12 +2,17 @@ package com.saife.dashboard.client.group.impl;
 
 import java.util.ArrayList;
 
+import com.saife.dashboard.client.common.SaifeClient;
 import com.saife.dashboard.client.common.SaifeListDTO;
 import com.saife.dashboard.client.group.GroupClient;
 import com.saife.dashboard.client.group.GroupDTO;
 import com.saife.dashboard.client.group.GroupMemberDTO;
 
-public class GroupClientMockImpl implements GroupClient {
+public class GroupClientMockImpl extends SaifeClient implements GroupClient {
+
+	public GroupClientMockImpl(String apiKey) {
+		super(apiKey);
+	}
 
 	@Override
 	public GroupDTO create(String kind, String name, String organizationId) {
