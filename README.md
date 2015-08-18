@@ -3,7 +3,8 @@ repo will be storing implementation for REST client; it's main responsibility - 
 
 
 
-=================   URLs   =================================
+=================   URLs   =================
+
 1) Dasboard
 https://dashboard.saifeinc.com/#/dashboard
 
@@ -24,7 +25,7 @@ http://saife-git.exadel.by/
 6) my private git lab project 
 http://saife-git.exadel.by/Polschikov/saife-draft-import-from-github
 
-===============   end of URLs   =========================================
+=================   end of URLs   =================
 
 
 APIs for implementation ASAP: 
@@ -52,7 +53,7 @@ DATA: What can be temporary hardcoded:
 - users, creds
 
 
-============================ examples of working HTTP requests:  =========================================================
+=================   examples of working HTTP requests:   =================
 
 I) via API key 
 header:
@@ -75,3 +76,27 @@ c) interactive logout:
 GET /api/v2/interactive/logout 
 response: https://yadi.sk/i/uIN9lVxtiVuVe
 
+
+=================   How to use SAIFE REST client API  =================
+
+import com.saife.dashboard.client.SaifeClientFactory;
+
+...
+
+String apiKey = "yourApiKey";
+String certId = "tourCertificateId";
+
+SaifeClientFactory factory = SaifeClientFactory.getInstance(apiKey);
+
+CertificateClient certClient = factory.getCertificateClient();
+try {
+	certClient.resetPassword(certId);
+} catch (ClientException ce) {
+	// client exception can be caused on client side only,
+	// for example if connection is broken
+} catch (SaifeException se) {
+	// SAIFE exception is happened on SAIFE dashboard server,
+	// this exception contains SAIFE error inside, by type of the error
+	// you can determine what actually happened, for example, if certificate
+	// cannot be found by the given certId, SAIFE error will be NOT_FOUND.
+}
