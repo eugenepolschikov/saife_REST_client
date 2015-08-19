@@ -21,4 +21,8 @@ public class SaifeGroupMember extends AbstractSaifeObject {
 		this.kind = kind;
 	}
 
+	@Override
+	public String toString() {
+		return "SaifeGroupMember [id=" + id + ", object=" + object + ", kind=" + kind + "]";
+	}
 }

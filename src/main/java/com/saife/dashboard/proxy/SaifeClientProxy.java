@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.saife.dashboard.common.AbstractSaifeClient;
+import com.saife.dashboard.common.SaifeClientException;
 import com.saife.dashboard.common.SaifeEndpointUrl;
 import com.saife.dashboard.common.SaifeParam;
 import com.saife.dashboard.http.HttpMethodData;
@@ -43,8 +44,15 @@ public class SaifeClientProxy implements InvocationHandler {
 			for (int i=0; i<annotations.length; i++) {
 				Annotation[] ann = annotations[i];
 				for (int j=0; j<ann.length; j++) {
-					if (ann[j] instanceof SaifeParam && args[i] != null) {
-						params.put(((SaifeParam)ann[j]).value(), args[i]);
+					if (ann[j] instanceof SaifeParam) {
+						SaifeParam saifeParam = (SaifeParam)ann[j];
+						if (saifeParam.requred() && args[i] == null) {
+							throw new SaifeClientException(saifeClient.getClass().getName() + "." + proxyMethod.getName() + 
+									"(): parameter " + saifeParam.name() + " is null but declared as requred.");
+						}
+						if (args[i] != null) {
+							params.put(saifeParam.name(), args[i]);
+						}
 					}
 				}
 			}

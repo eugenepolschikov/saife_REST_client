@@ -9,5 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.PARAMETER)
 public @interface SaifeParam {
 	
-	public String value();
+	public String name();
+	public boolean requred() default true;
 }

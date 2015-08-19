@@ -33,11 +33,18 @@ public interface SaifeGroupClient {
 	/**
 	 * Disbands the group.
 	 * @param groupId - group Id
-	 * @param sync - (false by default) if true call will block until operation is completed
 	 */
-	void disband(String groupId, boolean sync)
+	void disband(String groupId)
 			throws SaifeClientException, SaifeDashboardException;
 
+	/**
+	 * Disbands the group.
+	 * @param groupId - group Id
+	 * @param sync - (false by default) if true call will block until operation is completed
+	 */
+	void disbandSync(String groupId)
+			throws SaifeClientException, SaifeDashboardException;
+	
 	/**
 	 * Returns Group object containing the group details.
 	 * @param groupId - group Id
@@ -49,11 +56,18 @@ public interface SaifeGroupClient {
 	 * Adds certificate to the group.
 	 * @param groupId - group Id
 	 * @param certId - certificate Id
-	 * @param sync - (false by default) if true call will block until operation is completed
 	 */
-	SaifeGroup addCertificate(String groupId, String certId, boolean sync)
+	SaifeGroup addCertificate(String groupId, String certId)
 			throws SaifeClientException, SaifeDashboardException;
 
+	/**
+	 * Adds certificate to the group.
+	 * Call will block until operation is completed
+	 * @param groupId - group Id
+	 * @param certId - certificate Id
+	 */
+	SaifeGroup addCertificateSync(String groupId, String certId)
+			throws SaifeClientException, SaifeDashboardException;
 
 	/**
 	 * Removes certificate from the group.
@@ -61,7 +75,16 @@ public interface SaifeGroupClient {
 	 * @param certId - certificate Id
 	 * @param sync - (false by default) if true call will block until operation is completed
 	 */
-	SaifeGroup removeCertificate(String groupId, String certId, boolean sync)
+	SaifeGroup removeCertificate(String groupId, String certId)
+			throws SaifeClientException, SaifeDashboardException;
+
+	/**
+	 * Removes certificate from the group.
+	 * Call will block until operation is completed.
+	 * @param groupId - group Id
+	 * @param certId - certificate Id
+	 */
+	SaifeGroup removeCertificateSync(String groupId, String certId)
 			throws SaifeClientException, SaifeDashboardException;
 
 	/**

@@ -51,4 +51,10 @@ public class SaifeGroup extends AbstractSaifeObject {
 		this.members = members;
 	}
 
+	@Override
+	public String toString() {
+		return "SaifeGroup [id=" + id + ", object=" + object + ", kind=" + kind + ", name=" + name + ", organizationId="
+				+ organizationId + ", members=" + members + "]";
+	}
+
 }

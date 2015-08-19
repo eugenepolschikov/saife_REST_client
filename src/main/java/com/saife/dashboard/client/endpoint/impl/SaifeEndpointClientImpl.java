@@ -20,17 +20,17 @@ public class SaifeEndpointClientImpl extends AbstractSaifeClient implements Saif
 	@Override
 	@SaifeEndpointUrl(endpoint="/endpoint", method=HttpMethod.POST)
 	public SaifeEndpoint create(
-			@SaifeParam("name") String name,
-			@SaifeParam("userId") String userId) throws SaifeClientException, SaifeDashboardException {
+			@SaifeParam(name="name") String name,
+			@SaifeParam(name="userId") String userId) throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeEndpoint.class);
 	}
 
 	@Override
 	@SaifeEndpointUrl(endpoint="/endpoint/{endpointId}", method=HttpMethod.PUT)
 	public SaifeEndpoint update(
-			@SaifeParam("endpointId") String endpointId,
-			@SaifeParam("name") String name,
-			@SaifeParam("userId") String userId)
+			@SaifeParam(name="endpointId") String endpointId,
+			@SaifeParam(name="name") String name,
+			@SaifeParam(name="userId") String userId)
 			throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeEndpoint.class);
 	}
@@ -38,22 +38,22 @@ public class SaifeEndpointClientImpl extends AbstractSaifeClient implements Saif
 	@Override
 	@SaifeEndpointUrl(endpoint="/endpoint/{endpointId}", method=HttpMethod.GET)
 	public SaifeEndpoint retrieve(
-			@SaifeParam("endpointId") String endpointId) throws SaifeClientException, SaifeDashboardException {
+			@SaifeParam(name="endpointId") String endpointId) throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeEndpoint.class);
 	}
 
 	@Override
 	@SaifeEndpointUrl(endpoint="/endpoint/{endpointId}", method=HttpMethod.DELETE)
 	public SaifeEndpoint remove(
-			@SaifeParam("endpointId") String endpointId) throws SaifeClientException, SaifeDashboardException {
+			@SaifeParam(name="endpointId") String endpointId) throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeEndpoint.class);
 	}
 
 	@Override
 	@SaifeEndpointUrl(endpoint="/endpoint", method=HttpMethod.GET)
 	public SaifeEndpointList list(
-			@SaifeParam("userId") String userId,
-			@SaifeParam("groupId") String groupId) throws SaifeClientException, SaifeDashboardException {
+			@SaifeParam(name="userId", requred=false) String userId,
+			@SaifeParam(name="groupId", requred=false) String groupId) throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeEndpointList.class);
 	}
 

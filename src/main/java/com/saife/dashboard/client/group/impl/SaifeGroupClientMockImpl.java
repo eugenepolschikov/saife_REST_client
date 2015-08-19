@@ -32,9 +32,13 @@ public class SaifeGroupClientMockImpl extends AbstractSaifeClient implements Sai
 	}
 
 	@Override
-	public void disband(String groupId, boolean sync) {
+	public void disband(String groupId) {
 	}
 
+	@Override
+	public void disbandSync(String groupId) {
+	}
+	
 	@Override
 	public SaifeGroup details(String groupId) {
 		SaifeGroup res = createMockGroupDTO();
@@ -43,7 +47,7 @@ public class SaifeGroupClientMockImpl extends AbstractSaifeClient implements Sai
 	}
 
 	@Override
-	public SaifeGroup addCertificate(String groupId, String certId, boolean sync) {
+	public SaifeGroup addCertificate(String groupId, String certId) {
 		SaifeGroup res = createMockGroupDTO();
 		res.setId(groupId);
 		SaifeGroupMember mem = new SaifeGroupMember();
@@ -53,11 +57,21 @@ public class SaifeGroupClientMockImpl extends AbstractSaifeClient implements Sai
 		return res;
 	}
 
+	public SaifeGroup addCertificateSync(String groupId, String certId) {
+		return addCertificate(groupId, certId);
+	}
+	
+	
 	@Override
-	public SaifeGroup removeCertificate(String groupId, String certId, boolean sync) {
+	public SaifeGroup removeCertificate(String groupId, String certId) {
 		SaifeGroup res = createMockGroupDTO();
 		res.setId(groupId);
 		return res;
+	}
+	
+	@Override
+	public SaifeGroup removeCertificateSync(String groupId, String certId) {
+		return removeCertificate(groupId, certId);
 	}
 
 	@Override

@@ -29,7 +29,4 @@ public class SaifeEndpointList extends SaifeObjectList {
 		sb.append("\n]]");
 		return sb.toString();
 	}
-	
-	
-
 }

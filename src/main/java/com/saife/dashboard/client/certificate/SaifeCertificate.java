@@ -9,7 +9,6 @@ public class SaifeCertificate extends AbstractSaifeObject {
 
 	private static final long serialVersionUID = 1L;
 
-
 	private String		capabilities;
 	private String		certificateLeaf;
 	private Date		createTime;
@@ -121,5 +120,4 @@ public class SaifeCertificate extends AbstractSaifeObject {
 				+ managerId + ", modifyTime=" + modifyTime + ", organizationId=" + organizationId + ", revokeTime="
 				+ revokeTime + ", name=" + name + ", userId=" + userId + "]";
 	}
-
 }

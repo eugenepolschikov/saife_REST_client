@@ -22,45 +22,45 @@ public class SaifeCertificateClientImpl extends AbstractSaifeClient implements S
 	@Override
 	@SaifeEndpointUrl(endpoint="/certificate/pkcs10csr", method=HttpMethod.POST)
 	public SaifeCertificate create(
-			@SaifeParam("pkcs10csr") String pkcs10csr,
-			@SaifeParam("capabilities") String capabilities,
-			@SaifeParam("userId") String userId,
-			@SaifeParam("organizationId") String organizationId,
-			@SaifeParam("endpointId") String endpointId,
-			@SaifeParam("expireTime") Date expireTime,
-			@SaifeParam("name") String name) throws SaifeClientException, SaifeDashboardException {
+			@SaifeParam(name="pkcs10csr") String pkcs10csr,
+			@SaifeParam(name="capabilities") String capabilities,
+			@SaifeParam(name="userId") String userId,
+			@SaifeParam(name="organizationId") String organizationId,
+			@SaifeParam(name="endpointId") String endpointId,
+			@SaifeParam(name="expireTime") Date expireTime,
+			@SaifeParam(name="name") String name) throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeCertificate.class);
 	}
 
 	@Override
 	@SaifeEndpointUrl(endpoint="/certificate/{certId}", method=HttpMethod.PUT)
 	public SaifeCertificate update(
-			@SaifeParam("certId") String certId,
-			@SaifeParam("organizationId") String organizationId,
-			@SaifeParam("endpointId") String endpointId,
-			@SaifeParam("expireTime") Date expireTime,
-			@SaifeParam("name") String name) throws SaifeClientException, SaifeDashboardException {
+			@SaifeParam(name="certId") String certId,
+			@SaifeParam(name="organizationId") String organizationId,
+			@SaifeParam(name="endpointId") String endpointId,
+			@SaifeParam(name="expireTime") Date expireTime,
+			@SaifeParam(name="name") String name) throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeCertificate.class);
 	}
 
 	@Override
 	@SaifeEndpointUrl(endpoint="/certificate/{certId}", method=HttpMethod.GET)
 	public SaifeCertificate retrieveById(
-			@SaifeParam("certId") String certId) throws SaifeClientException, SaifeDashboardException {
+			@SaifeParam(name="certId") String certId) throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeCertificate.class);
 	}
 
 	@Override
 	@SaifeEndpointUrl(endpoint="/certificate/fingerprint/{fingerprint}", method=HttpMethod.GET)
 	public SaifeCertificate retrieveByFingerpring(
-			@SaifeParam("fingerprint") String fingerprint) throws SaifeClientException, SaifeDashboardException {
+			@SaifeParam(name="fingerprint") String fingerprint) throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeCertificate.class);
 	}
 
 	@Override
 	@SaifeEndpointUrl(endpoint="/certificate/{certId}", method=HttpMethod.DELETE)
 	public SaifeCertificate revoke(
-			@SaifeParam("certId") String certId)
+			@SaifeParam(name="certId") String certId)
 			throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeCertificate.class);
 	}
@@ -68,8 +68,8 @@ public class SaifeCertificateClientImpl extends AbstractSaifeClient implements S
 	@Override
 	@SaifeEndpointUrl(endpoint="/certificate/{certId}/{date}", method=HttpMethod.DELETE)
 	public SaifeCertificate revoke(
-			@SaifeParam("certId") String certId,
-			@SaifeParam("revokeTime") Date revokeTime)
+			@SaifeParam(name="certId") String certId,
+			@SaifeParam(name="revokeTime") Date revokeTime)
 			throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeCertificate.class);
 	}
@@ -77,9 +77,9 @@ public class SaifeCertificateClientImpl extends AbstractSaifeClient implements S
 	@Override
 	@SaifeEndpointUrl(endpoint="/certificate", method=HttpMethod.GET)
 	public SaifeCertificateList list(
-			@SaifeParam("includeRevokedCert") boolean includeRevokedCert,
-			@SaifeParam("orgId") String orgId,
-			@SaifeParam("groupId") String groupId)
+			@SaifeParam(name="includeRevokedCert") boolean includeRevokedCert,
+			@SaifeParam(name="orgId", requred=false) String orgId,
+			@SaifeParam(name="groupId", requred=false) String groupId)
 			throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeCertificateList.class);
 	}
@@ -87,7 +87,7 @@ public class SaifeCertificateClientImpl extends AbstractSaifeClient implements S
 	@Override
 	@SaifeEndpointUrl(endpoint="/certificate/{certId}/resetpw", method=HttpMethod.GET)
 	public SaifeCertificate resetPassword(
-			@SaifeParam("certId") String certId) throws SaifeClientException, SaifeDashboardException {
+			@SaifeParam(name="certId") String certId) throws SaifeClientException, SaifeDashboardException {
 		return HttpMethodInvoker.invoke(SaifeCertificate.class);
 	}
 

@@ -5,7 +5,7 @@ import com.saife.dashboard.client.certificate.impl.SaifeCertificateClientImpl;
 import com.saife.dashboard.client.endpoint.SaifeEndpointClient;
 import com.saife.dashboard.client.endpoint.impl.SaifeEndpointClientImpl;
 import com.saife.dashboard.client.group.SaifeGroupClient;
-import com.saife.dashboard.client.group.impl.SaifeGroupClientMockImpl;
+import com.saife.dashboard.client.group.impl.SaifeGroupClientImpl;
 import com.saife.dashboard.proxy.SaifeClientProxy;
 
 public class SaifeClientFactory {
@@ -25,7 +25,7 @@ public class SaifeClientFactory {
 	}
 
 	public SaifeGroupClient getGroupClient() {
-		return new SaifeGroupClientMockImpl(apiKey);
+		return (SaifeGroupClient)SaifeClientProxy.newInstance(new SaifeGroupClientImpl(apiKey));
 	}
 
 	public SaifeEndpointClient getEndpointClient() {

@@ -95,8 +95,12 @@ public class HttpMethodInvoker {
 				}
 			});
 
-			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.000+0000").create();
-			return gson.fromJson(responseBody, result);
+			if (result != void.class) {
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.000+0000").create();
+				return gson.fromJson(responseBody, result);
+			} else {
+				return null;
+			}
 		} catch (IOException ex) {
 			throw new SaifeClientException("Could not execute HTTP request.", ex);
 		} catch (SaifeHttpException ex) {
