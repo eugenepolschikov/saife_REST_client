@@ -10,7 +10,7 @@ import com.saife.dashboard.client.certificate.SaifeCertificate;
 import com.saife.dashboard.client.certificate.SaifeCertificateClient;
 import com.saife.dashboard.client.certificate.SaifeCertificateList;
 import com.saife.dashboard.client.certificate.SaifeManager;
-import com.saife.dashboard.client.common.AbstractSaifeClient;
+import com.saife.dashboard.common.AbstractSaifeClient;
 
 public class SaifeCertificateClientMockImpl extends AbstractSaifeClient implements SaifeCertificateClient {
 
@@ -19,7 +19,7 @@ public class SaifeCertificateClientMockImpl extends AbstractSaifeClient implemen
 	}
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.000+0000");
-	
+
 	@Override
 	public SaifeCertificate create(String pkcs10csr, String capabilities, String userId, String organizationId,
 			String endpointId, Date expireTime, String name) {
@@ -70,7 +70,7 @@ public class SaifeCertificateClientMockImpl extends AbstractSaifeClient implemen
 		res.setFingerprint("-BULerh_HLabCTgwjbNUYkJCEdwCdMKDIooh2Y0-cVk");
 		res.setId("cer_000072G");
 		res.setLicenseId(null);
-		
+
 		SaifeManager manager = new SaifeManager();
 		manager.setId("man_0000008");
 		manager.setCreateTime(parseDate("2015-02-19T02:15:04.000+0000"));
@@ -85,10 +85,10 @@ public class SaifeCertificateClientMockImpl extends AbstractSaifeClient implemen
 		res.setOrganizationId("org_0000088");
 		res.setRevokeTime(null);
 		res.setUserId("usr_00000NR");
-		
+
 		return res;
 	}
-	
+
 	private Date parseDate(String dateStr) {
 		try {
 			return sdf.parse(dateStr);
@@ -96,5 +96,5 @@ public class SaifeCertificateClientMockImpl extends AbstractSaifeClient implemen
 			return null;
 		}
 	}
-	
+
 }

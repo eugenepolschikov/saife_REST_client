@@ -1,4 +1,4 @@
-package com.saife.dashboard.client.http;
+package com.saife.dashboard.http;
 
 import java.util.Map;
 

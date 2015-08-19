@@ -1,4 +1,4 @@
-package com.saife.dashboard.client.common;
+package com.saife.dashboard.common;
 
 public enum SaifeObjectType {
 	apikey,

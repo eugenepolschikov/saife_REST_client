@@ -2,8 +2,8 @@ package com.saife.dashboard.client.certificate;
 
 import java.util.Date;
 
-import com.saife.dashboard.client.common.SaifeObjectType;
-import com.saife.dashboard.client.common.AbstractSaifeObject;
+import com.saife.dashboard.common.AbstractSaifeObject;
+import com.saife.dashboard.common.SaifeObjectType;
 
 public class SaifeManager extends AbstractSaifeObject {
 
@@ -18,7 +18,7 @@ public class SaifeManager extends AbstractSaifeObject {
     	super();
     	setObject(SaifeObjectType.manager);
     }
-    
+
     public String getCertificateChain() {
 		return certificateChain;
 	}
@@ -49,5 +49,5 @@ public class SaifeManager extends AbstractSaifeObject {
 		return "SaifeManager [certificateChain=" + certificateChain + ", createTime=" + createTime + ", expireTime="
 				+ expireTime + ", fingerprint=" + fingerprint + "]";
 	}
-	
+
 }

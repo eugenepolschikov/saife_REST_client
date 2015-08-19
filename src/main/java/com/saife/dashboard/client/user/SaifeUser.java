@@ -1,7 +1,7 @@
 package com.saife.dashboard.client.user;
 
-import com.saife.dashboard.client.common.AbstractSaifeObject;
-import com.saife.dashboard.client.common.SaifeObjectType;
+import com.saife.dashboard.common.AbstractSaifeObject;
+import com.saife.dashboard.common.SaifeObjectType;
 
 public class SaifeUser extends AbstractSaifeObject {
 
@@ -11,7 +11,7 @@ public class SaifeUser extends AbstractSaifeObject {
 	private boolean disabled;
 	private String lastName;
 	private String profileImageUrl;
-	
+
 	public SaifeUser() {
 		super();
 		setObject(SaifeObjectType.user);

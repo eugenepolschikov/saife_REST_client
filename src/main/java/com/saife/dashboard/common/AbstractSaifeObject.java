@@ -1,4 +1,4 @@
-package com.saife.dashboard.client.common;
+package com.saife.dashboard.common;
 
 import java.io.Serializable;
 
@@ -24,5 +24,5 @@ public abstract class AbstractSaifeObject implements Serializable {
 	public void setObject(SaifeObjectType object) {
 		this.object = object;
 	}
-	
+
 }

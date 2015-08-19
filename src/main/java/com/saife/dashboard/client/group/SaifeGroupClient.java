@@ -1,14 +1,14 @@
 package com.saife.dashboard.client.group;
 
-import com.saife.dashboard.client.common.SaifeClientException;
-import com.saife.dashboard.client.common.SaifeDashboardException;
+import com.saife.dashboard.common.SaifeClientException;
+import com.saife.dashboard.common.SaifeDashboardException;
 
 /**
- * Group management client interface. 
- * 
+ * Group management client interface.
+ *
  * SAIFE uses groups (or enclaves) to simplify certificate distribution within the SAIFE Public Key Infrastructure.
  * Groups contain many SAIFE endpoints, and endpoints may be in many groups.
- * 
+ *
  * @see http://saifeinc.com/developers/libraries/management/?shell#group
  */
 public interface SaifeGroupClient {
@@ -21,7 +21,7 @@ public interface SaifeGroupClient {
 	 */
 	SaifeGroup create(String kind, String name, String organizationId)
 			throws SaifeClientException, SaifeDashboardException;
-	
+
 	/**
 	 * Changes the group.
 	 * @param groupId - group Id
@@ -37,41 +37,41 @@ public interface SaifeGroupClient {
 	 */
 	void disband(String groupId, boolean sync)
 			throws SaifeClientException, SaifeDashboardException;
-	
+
 	/**
 	 * Returns Group object containing the group details.
 	 * @param groupId - group Id
 	 */
 	SaifeGroup details(String groupId)
 			throws SaifeClientException, SaifeDashboardException;
-	
+
 	/**
 	 * Adds certificate to the group.
 	 * @param groupId - group Id
-	 * @param certId - certificate Id 
+	 * @param certId - certificate Id
 	 * @param sync - (false by default) if true call will block until operation is completed
 	 */
 	SaifeGroup addCertificate(String groupId, String certId, boolean sync)
 			throws SaifeClientException, SaifeDashboardException;
-	
+
 
 	/**
 	 * Removes certificate from the group.
 	 * @param groupId - group Id
-	 * @param certId - certificate Id 
+	 * @param certId - certificate Id
 	 * @param sync - (false by default) if true call will block until operation is completed
 	 */
 	SaifeGroup removeCertificate(String groupId, String certId, boolean sync)
 			throws SaifeClientException, SaifeDashboardException;
-	
+
 	/**
-	 * Returns list of groups which matched to queryable arguments. 
+	 * Returns list of groups which matched to queryable arguments.
 	 * @param kind
 	 * @param organizationId
 	 */
 	SaifeGroupList list(String kind, String organizationId)
 			throws SaifeClientException, SaifeDashboardException;
-	
+
 	/**
 	 * Merges two groups into one.
 	 * @param groupId1 - first group Id
@@ -79,5 +79,5 @@ public interface SaifeGroupClient {
 	 */
 	SaifeGroup merge(String groupId1, String groupId2)
 			throws SaifeClientException, SaifeDashboardException;
-	
+
 }

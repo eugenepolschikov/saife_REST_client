@@ -2,7 +2,7 @@ package com.saife.dashboard.client.certificate;
 
 import java.util.List;
 
-import com.saife.dashboard.client.common.SaifeObjectList;
+import com.saife.dashboard.common.SaifeObjectList;
 
 public class SaifeCertificateList extends SaifeObjectList {
 
@@ -20,7 +20,7 @@ public class SaifeCertificateList extends SaifeObjectList {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("SaifeCertificateList [\nhas_more=" + isHasMore() + ",\nId=" + getId() + 
+		StringBuilder sb = new StringBuilder("SaifeCertificateList [\nhas_more=" + isHasMore() + ",\nId=" + getId() +
 				",\nobject=" + getObject() + ",\ndata=[");
 		if (data != null) {
 			for (SaifeCertificate sc : data) {

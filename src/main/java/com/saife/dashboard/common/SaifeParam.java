@@ -1,4 +1,4 @@
-package com.saife.dashboard.client.http;
+package com.saife.dashboard.common;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

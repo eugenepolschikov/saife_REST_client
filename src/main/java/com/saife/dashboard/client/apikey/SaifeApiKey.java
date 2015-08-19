@@ -2,8 +2,8 @@ package com.saife.dashboard.client.apikey;
 
 import java.util.Date;
 
-import com.saife.dashboard.client.common.AbstractSaifeObject;
-import com.saife.dashboard.client.common.SaifeObjectType;
+import com.saife.dashboard.common.AbstractSaifeObject;
+import com.saife.dashboard.common.SaifeObjectType;
 
 public class SaifeApiKey extends AbstractSaifeObject {
 
@@ -15,7 +15,7 @@ public class SaifeApiKey extends AbstractSaifeObject {
 	private String organizationId;
 	private Date createTime;
 	private Date expireTime;
-	
+
 	public SaifeApiKey() {
 		super();
 		setObject(SaifeObjectType.apikey);

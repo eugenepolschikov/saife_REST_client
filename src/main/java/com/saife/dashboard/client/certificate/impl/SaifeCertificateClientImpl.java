@@ -5,13 +5,13 @@ import java.util.Date;
 import com.saife.dashboard.client.certificate.SaifeCertificate;
 import com.saife.dashboard.client.certificate.SaifeCertificateClient;
 import com.saife.dashboard.client.certificate.SaifeCertificateList;
-import com.saife.dashboard.client.common.AbstractSaifeClient;
-import com.saife.dashboard.client.common.SaifeClientException;
-import com.saife.dashboard.client.common.SaifeDashboardException;
-import com.saife.dashboard.client.http.HttpMethod;
-import com.saife.dashboard.client.http.HttpMethodInvoker;
-import com.saife.dashboard.client.http.SaifeEndpoint;
-import com.saife.dashboard.client.http.SaifeParam;
+import com.saife.dashboard.common.AbstractSaifeClient;
+import com.saife.dashboard.common.SaifeClientException;
+import com.saife.dashboard.common.SaifeDashboardException;
+import com.saife.dashboard.common.SaifeEndpoint;
+import com.saife.dashboard.common.SaifeParam;
+import com.saife.dashboard.http.HttpMethod;
+import com.saife.dashboard.http.HttpMethodInvoker;
 
 public class SaifeCertificateClientImpl extends AbstractSaifeClient implements SaifeCertificateClient {
 
@@ -23,7 +23,7 @@ public class SaifeCertificateClientImpl extends AbstractSaifeClient implements S
 	@SaifeEndpoint(endpoint="/certificate/pkcs10csr", method=HttpMethod.POST)
 	public SaifeCertificate create(
 			@SaifeParam(name="pkcs10csr") String pkcs10csr,
-			@SaifeParam(name="capabilities") String capabilities, 
+			@SaifeParam(name="capabilities") String capabilities,
 			@SaifeParam(name="userId") String userId,
 			@SaifeParam(name="organizationId") String organizationId,
 			@SaifeParam(name="endpointId") String endpointId,

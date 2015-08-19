@@ -1,6 +1,6 @@
-package com.saife.dashboard.client.http;
+package com.saife.dashboard.http;
 
-import com.saife.dashboard.client.common.SaifeDashboardError;
+import com.saife.dashboard.common.SaifeDashboardError;
 
 public class SaifeHttpException extends RuntimeException {
 
@@ -16,5 +16,5 @@ public class SaifeHttpException extends RuntimeException {
 	public SaifeDashboardError getSaifeError() {
 		return saifeError;
 	}
-	
+
 }

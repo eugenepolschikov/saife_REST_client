@@ -2,9 +2,9 @@ package com.saife.dashboard.client.endpoint;
 
 import java.util.List;
 
-import com.saife.dashboard.client.common.AbstractSaifeObject;
-import com.saife.dashboard.client.common.SaifeObjectType;
 import com.saife.dashboard.client.user.SaifeUser;
+import com.saife.dashboard.common.AbstractSaifeObject;
+import com.saife.dashboard.common.SaifeObjectType;
 
 public class SaifeEndpoint extends AbstractSaifeObject {
 
@@ -13,7 +13,7 @@ public class SaifeEndpoint extends AbstractSaifeObject {
 	private String name;
 	private SaifeUser user;
 	private List<String> certificates;
-	
+
 	public SaifeEndpoint() {
 		super();
 		setObject(SaifeObjectType.endpoint);

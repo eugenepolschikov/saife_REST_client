@@ -1,4 +1,4 @@
-package com.saife.dashboard.client.common;
+package com.saife.dashboard.common;
 
 public class SaifeException extends Exception {
 
@@ -19,5 +19,5 @@ public class SaifeException extends Exception {
 	public SaifeException(Throwable cause) {
 		super(cause);
 	}
-	
+
 }

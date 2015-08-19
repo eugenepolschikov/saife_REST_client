@@ -1,8 +1,5 @@
-package com.saife.dashboard.client.common;
+package com.saife.dashboard.common;
 
-import com.saife.dashboard.client.http.SaifeEndpoint;
-
-@SaifeEndpoint(endpoint="http://dashboard.saifeinc.com/api/v2")
 public abstract class AbstractSaifeClient {
 
 	protected String apiKey;

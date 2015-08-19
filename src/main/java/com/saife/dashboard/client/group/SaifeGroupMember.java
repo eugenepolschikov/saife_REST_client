@@ -1,7 +1,7 @@
 package com.saife.dashboard.client.group;
 
-import com.saife.dashboard.client.common.SaifeObjectType;
-import com.saife.dashboard.client.common.AbstractSaifeObject;
+import com.saife.dashboard.common.AbstractSaifeObject;
+import com.saife.dashboard.common.SaifeObjectType;
 
 public class SaifeGroupMember extends AbstractSaifeObject {
 
@@ -13,12 +13,12 @@ public class SaifeGroupMember extends AbstractSaifeObject {
 		super();
 		setObject(SaifeObjectType.member);
 	}
-	
+
 	public String getKind() {
 		return kind;
 	}
 	public void setKind(String kind) {
 		this.kind = kind;
 	}
-	
+
 }

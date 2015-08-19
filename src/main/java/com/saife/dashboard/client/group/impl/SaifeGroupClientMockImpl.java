@@ -2,11 +2,11 @@ package com.saife.dashboard.client.group.impl;
 
 import java.util.ArrayList;
 
-import com.saife.dashboard.client.common.AbstractSaifeClient;
 import com.saife.dashboard.client.group.SaifeGroup;
 import com.saife.dashboard.client.group.SaifeGroupClient;
 import com.saife.dashboard.client.group.SaifeGroupList;
 import com.saife.dashboard.client.group.SaifeGroupMember;
+import com.saife.dashboard.common.AbstractSaifeClient;
 
 public class SaifeGroupClientMockImpl extends AbstractSaifeClient implements SaifeGroupClient {
 
@@ -78,7 +78,7 @@ public class SaifeGroupClientMockImpl extends AbstractSaifeClient implements Sai
 
 	private SaifeGroup createMockGroupDTO() {
 		SaifeGroup res = new SaifeGroup();
-		
+
 		res.setId("grp_0000038");
 		res.setKind("omni");
 		res.setName("The Revengers");
@@ -88,12 +88,12 @@ public class SaifeGroupClientMockImpl extends AbstractSaifeClient implements Sai
 		res.getMembers().add(createMockGroupMemberDTO());
 		return res;
 	}
-	
+
 	private SaifeGroupMember createMockGroupMemberDTO() {
 		SaifeGroupMember res = new SaifeGroupMember();
 		res.setId("cer_W69AF7ZXCC6KT");
 		res.setKind("member");
 		return res;
 	}
-	
+
 }

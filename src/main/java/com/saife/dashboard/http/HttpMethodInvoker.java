@@ -1,4 +1,4 @@
-package com.saife.dashboard.client.http;
+package com.saife.dashboard.http;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -14,11 +14,13 @@ import java.util.Map;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpEntityEnclosingRequest;
+import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
@@ -31,9 +33,11 @@ import org.apache.http.util.EntityUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.saife.dashboard.client.common.SaifeClientException;
-import com.saife.dashboard.client.common.SaifeDashboardError;
-import com.saife.dashboard.client.common.SaifeDashboardException;
+import com.saife.dashboard.common.SaifeClientException;
+import com.saife.dashboard.common.SaifeDashboardError;
+import com.saife.dashboard.common.SaifeDashboardException;
+import com.saife.dashboard.common.SaifeProperties;
+import com.saife.dashboard.proxy.SaifeClientProxy;
 
 public class HttpMethodInvoker {
 
@@ -43,24 +47,27 @@ public class HttpMethodInvoker {
 	private static HttpClient client = HttpClientBuilder.create().build();
 
 	public static <T> T invoke (Class<T>result) throws SaifeClientException, SaifeDashboardException {
-		
+
 		HttpMethodData httpMethodData = SaifeClientProxy.getHttpMethodData();
 		if (httpMethodData == null) {
 			throw new SaifeClientException("HTTP request data is not initialized.");
-		} 
+		}
 
 		HttpRequestBase req = getHttpRequest(httpMethodData.getMethod());
 		req.addHeader("Authorization", "Basic " + Base64.encodeBase64String(httpMethodData.getApiKey().getBytes()));
 
-// TODO: use proxy config 
-//		HttpHost proxy = new HttpHost("localhost", 8888, );
-//		RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
-//		req.setConfig(config);
-
+		if ("true".equals(SaifeProperties.getProperty(SaifeProperties.SAIFE_PROXY_USE))) {
+			HttpHost proxy = new HttpHost(
+					SaifeProperties.getProperty(SaifeProperties.SAIFE_PROXY_HOST),
+					Integer.parseInt(SaifeProperties.getProperty(SaifeProperties.SAIFE_PROXY_PORT)),
+					SaifeProperties.getProperty(SaifeProperties.SAIFE_PROXY_SCHEME)
+			);
+			req.setConfig(RequestConfig.custom().setProxy(proxy).build());
+		}
 
 		String uri;
 		try {
-			uri = buildUriAndParameters(httpMethodData.getEndpoint(), req, httpMethodData.getParameters());
+			uri = buildUriAndParameters(SaifeProperties.getProperty(SaifeProperties.SAIFE_ENDPOINT) + httpMethodData.getEndpoint(), req, httpMethodData.getParameters());
 		} catch (UnsupportedEncodingException ex) {
 			throw new SaifeClientException(ex.getMessage(), ex);
 		}
@@ -75,7 +82,7 @@ public class HttpMethodInvoker {
 				@Override
 				public String handleResponse(HttpResponse resp) throws ClientProtocolException, IOException {
 					int code = resp.getStatusLine().getStatusCode();
-					if (code >= 400) { 
+					if (code >= 400) {
 						for (SaifeDashboardError error : SaifeDashboardError.values()) {
 							if (code == error.getCode()) {
 								throw new SaifeHttpException(error, resp.getStatusLine().getReasonPhrase());
@@ -87,14 +94,14 @@ public class HttpMethodInvoker {
 					return entity == null ? null : EntityUtils.toString(entity);
 				}
 			});
-			
+
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.000+0000").create();
 			return gson.fromJson(responseBody, result);
 		} catch (IOException ex) {
 			throw new SaifeClientException("Could not execute HTTP request.", ex);
 		} catch (SaifeHttpException ex) {
 			throw new SaifeDashboardException(ex.getSaifeError(), ex.getMessage());
-		} 
+		}
 	}
 
 	private static HttpRequestBase getHttpRequest(HttpMethod httpMethod) throws SaifeClientException {
@@ -113,7 +120,7 @@ public class HttpMethodInvoker {
 	}
 
 	private static String buildUriAndParameters(String uri, HttpRequestBase req, Map<String,Object>params) throws UnsupportedEncodingException {
-		
+
 		if (uri == null || params == null) {
 			return null;
 		}
@@ -139,7 +146,7 @@ public class HttpMethodInvoker {
 			} else {
 				// GET, DELETE
 				boolean first = true;
-				StringBuilder sb = new StringBuilder(uri); 
+				StringBuilder sb = new StringBuilder(uri);
 				for (Map.Entry<String, Object> entry : params.entrySet()) {
 					if (first) {
 						first = false;

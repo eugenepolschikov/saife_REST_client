@@ -1,4 +1,4 @@
-package com.saife.dashboard.client.common;
+package com.saife.dashboard.common;
 
 public enum SaifeDashboardError {
 
@@ -14,10 +14,10 @@ public enum SaifeDashboardError {
 	INTERNAL_SERVER_ERROR(500, "Internal Server Error", "We had a problem with our server. Try again later."),
 	SERVICE_UNAVAILABLE	 (503, "Service Unavailable", "We’re temporarily offline for maintenance. Please try again later."),
 	UNKNOWN_ERROR	 	 (000, "Unknown Error.", "Unknown or unexpected HTTP error.");
-	
+
 	private int code;
 	private String error, description;
-	
+
 	SaifeDashboardError(int code, String error, String description) {
 		this.code = code;
 		this.error = error;
@@ -35,5 +35,5 @@ public enum SaifeDashboardError {
 	public String getDescription() {
 		return description;
 	}
-	
+
 }

@@ -1,4 +1,4 @@
-package com.saife.dashboard.client.common;
+package com.saife.dashboard.common;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -15,5 +15,5 @@ public abstract class SaifeObjectList extends AbstractSaifeObject {
 	public void setHasMore(boolean hasMore) {
 		this.hasMore = hasMore;
 	}
-	
+
 }

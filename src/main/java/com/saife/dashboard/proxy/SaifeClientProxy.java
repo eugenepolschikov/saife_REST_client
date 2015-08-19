@@ -1,4 +1,4 @@
-package com.saife.dashboard.client.http;
+package com.saife.dashboard.proxy;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationHandler;
@@ -8,32 +8,26 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.saife.dashboard.client.common.AbstractSaifeClient;
+import com.saife.dashboard.common.AbstractSaifeClient;
+import com.saife.dashboard.common.SaifeEndpoint;
+import com.saife.dashboard.common.SaifeParam;
+import com.saife.dashboard.http.HttpMethodData;
 
 public class SaifeClientProxy implements InvocationHandler {
 
 	private AbstractSaifeClient saifeClient;
-	private SaifeEndpoint commonEndpoint = null;
-	
+
 	private static ThreadLocal<HttpMethodData>thHttpMethodData = new ThreadLocal<HttpMethodData>();
-	
+
 	public static Object newInstance(AbstractSaifeClient saifeClient) {
 		return Proxy.newProxyInstance(
 			saifeClient.getClass().getClassLoader(),
 			saifeClient.getClass().getInterfaces(),
 			new SaifeClientProxy(saifeClient));
 	}
-	
+
 	private SaifeClientProxy(AbstractSaifeClient saifeClient) {
 		this.saifeClient = saifeClient;
-		Class<?>clazz = saifeClient.getClass();
-		while (clazz != null) {
-			commonEndpoint = clazz.getAnnotation(SaifeEndpoint.class);
-			if (commonEndpoint != null) {
-				break;
-			} 
-			clazz = clazz.getSuperclass();
-		}
 	}
 
 	@Override
@@ -41,8 +35,8 @@ public class SaifeClientProxy implements InvocationHandler {
 		Method objMethod = saifeClient.getClass().getMethod(proxyMethod.getName(), proxyMethod.getParameterTypes());
 		SaifeEndpoint methodEndpoint = objMethod.getAnnotation(SaifeEndpoint.class);
 		HttpMethodData httpMethodData = new HttpMethodData();
-		if (commonEndpoint != null && methodEndpoint != null) {
-			httpMethodData.setEndpoint(commonEndpoint.endpoint() + methodEndpoint.endpoint());
+		if (methodEndpoint != null) {
+			httpMethodData.setEndpoint(methodEndpoint.endpoint());
 			httpMethodData.setMethod(methodEndpoint.method());
 			Map<String, Object>params = new HashMap<String,Object>();
 			Annotation annotations[][] = objMethod.getParameterAnnotations();
@@ -69,5 +63,5 @@ public class SaifeClientProxy implements InvocationHandler {
 	public static HttpMethodData getHttpMethodData() {
 		return thHttpMethodData.get();
 	}
-	
+
 }

@@ -1,4 +1,4 @@
-package com.saife.dashboard.client.common;
+package com.saife.dashboard.common;
 
 public class SaifeDashboardException extends SaifeException {
 
@@ -29,5 +29,5 @@ public class SaifeDashboardException extends SaifeException {
 	public SaifeDashboardError getSaifeError() {
 		return saifeError;
 	}
-	
+
 }

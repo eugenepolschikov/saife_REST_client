@@ -4,6 +4,7 @@ import com.saife.dashboard.client.SaifeClientFactory;
 import com.saife.dashboard.client.certificate.SaifeCertificate;
 import com.saife.dashboard.client.certificate.SaifeCertificateClient;
 import com.saife.dashboard.client.certificate.SaifeCertificateList;
+import com.saife.dashboard.common.SaifeProperties;
 
 public class SaifeCertificateMain {
 
@@ -21,6 +22,6 @@ public class SaifeCertificateMain {
 				}
 			}
 		}
-		
+
 	}
 }

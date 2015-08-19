@@ -3,13 +3,13 @@ package com.saife.dashboard.client.endpoint.impl;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.saife.dashboard.client.common.AbstractSaifeClient;
-import com.saife.dashboard.client.common.SaifeClientException;
-import com.saife.dashboard.client.common.SaifeDashboardException;
 import com.saife.dashboard.client.endpoint.SaifeEndpoint;
 import com.saife.dashboard.client.endpoint.SaifeEndpointClient;
 import com.saife.dashboard.client.endpoint.SaifeEndpointList;
 import com.saife.dashboard.client.user.SaifeUser;
+import com.saife.dashboard.common.AbstractSaifeClient;
+import com.saife.dashboard.common.SaifeClientException;
+import com.saife.dashboard.common.SaifeDashboardException;
 
 public class SaifeEndpointClientMockImpl extends AbstractSaifeClient implements SaifeEndpointClient {
 
@@ -50,15 +50,15 @@ public class SaifeEndpointClientMockImpl extends AbstractSaifeClient implements 
 		res.setCertificates(Arrays.asList("cer_000000G", "cer_0000008"));
 		res.setId("end_000000R");
 		res.setName("Lister");
-		
+
 		SaifeUser user = new SaifeUser();
 		user.setFirstName("Chad");
 		user.setLastName("Chadington");
 		user.setId("usr_000000G");
 		user.setProfileImageUrl(null);
 		res.setUser(user);
-		
+
 		return res;
 	}
-	
+
 }

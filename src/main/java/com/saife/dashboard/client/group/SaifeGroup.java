@@ -2,8 +2,8 @@ package com.saife.dashboard.client.group;
 
 import java.util.List;
 
-import com.saife.dashboard.client.common.SaifeObjectType;
-import com.saife.dashboard.client.common.AbstractSaifeObject;
+import com.saife.dashboard.common.AbstractSaifeObject;
+import com.saife.dashboard.common.SaifeObjectType;
 
 public class SaifeGroup extends AbstractSaifeObject {
 
@@ -13,7 +13,7 @@ public class SaifeGroup extends AbstractSaifeObject {
     private String name;
     private String organizationId;
     private List<SaifeGroupMember>members;
-	
+
 	public SaifeGroup() {
 		super();
 		setObject(SaifeObjectType.group);

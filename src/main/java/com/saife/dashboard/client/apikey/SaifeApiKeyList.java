@@ -2,7 +2,7 @@ package com.saife.dashboard.client.apikey;
 
 import java.util.List;
 
-import com.saife.dashboard.client.common.SaifeObjectList;
+import com.saife.dashboard.common.SaifeObjectList;
 
 public class SaifeApiKeyList extends SaifeObjectList {
 

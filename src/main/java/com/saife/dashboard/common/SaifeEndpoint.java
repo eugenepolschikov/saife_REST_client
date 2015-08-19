@@ -1,15 +1,18 @@
-package com.saife.dashboard.client.http;
+package com.saife.dashboard.common;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import com.saife.dashboard.http.HttpMethod;
+
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target(ElementType.METHOD)
 public @interface SaifeEndpoint {
 
 	public String endpoint();
-	public HttpMethod method() default HttpMethod.GET;
-	
+
+	public HttpMethod method();
+
 }

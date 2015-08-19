@@ -2,7 +2,7 @@ package com.saife.dashboard.client.group;
 
 import java.util.List;
 
-import com.saife.dashboard.client.common.SaifeObjectList;
+import com.saife.dashboard.common.SaifeObjectList;
 
 public class SaifeGroupList extends SaifeObjectList {
 
