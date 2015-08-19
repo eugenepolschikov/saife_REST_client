@@ -12,9 +12,7 @@ public class SaifeClientProxy implements InvocationHandler {
 	private Object obj;
 	private SaifeEndpoint commonEndpoint = null;
 	
-	private static ThreadLocal<String>currentEndpoint = new ThreadLocal<String>();
-	private static ThreadLocal<HttpMethod>httpMethod = new ThreadLocal<HttpMethod>();
-	private static ThreadLocal<Map<String,Object>>parameters = new ThreadLocal<Map<String,Object>>();
+	private static ThreadLocal<HttpMethodData>httpMethodData = new ThreadLocal<HttpMethodData>();
 	
 	public static Object newInstance(Object obj) {
 		return Proxy.newProxyInstance(
@@ -39,9 +37,12 @@ public class SaifeClientProxy implements InvocationHandler {
 	public Object invoke(Object proxy, Method proxyMethod, Object[] args) throws Throwable {
 		Method objMethod = obj.getClass().getMethod(proxyMethod.getName(), proxyMethod.getParameterTypes());
 		SaifeEndpoint methodEndpoint = objMethod.getAnnotation(SaifeEndpoint.class);
+		
+		HttpMethodData httpMethodData = new HttpMethodData();
+		
 		if (commonEndpoint != null && methodEndpoint != null) {
-			currentEndpoint.set(commonEndpoint.endpoint() + methodEndpoint.endpoint());
-			httpMethod.set(methodEndpoint.method());
+			httpMethodData.setEndpoint(commonEndpoint.endpoint() + methodEndpoint.endpoint());
+			httpMethodData.setMethod(methodEndpoint.method());
 			Map<String, Object>params = new HashMap<String,Object>();
 			Annotation annotations[][] = objMethod.getParameterAnnotations();
 			for (int i=0; i<annotations.length; i++) {
@@ -52,26 +53,13 @@ public class SaifeClientProxy implements InvocationHandler {
 					}
 				}
 			}
-			parameters.set(params);
+			httpMethodData.setParameters(params);
 		}
-		try {
-			return proxyMethod.invoke(obj, args);
-		} finally {
-			currentEndpoint.remove();
-			httpMethod.remove();
-			parameters.remove();
-		}
+		return proxyMethod.invoke(obj, args);
 	}
 
-	public static String getEndpoint() {
-		return currentEndpoint.get();
+	public static HttpMethodData getHttpMethodData() {
+		return httpMethodData.get();
 	}
 	
-	public static HttpMethod getHttpMethod() {
-		return httpMethod.get();
-	}
-	
-	public static Map<String,Object> getParameters() {
-		return parameters.get();
-	}
 }

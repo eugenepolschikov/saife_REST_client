@@ -5,20 +5,28 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import com.google.gson.Gson;
@@ -28,19 +36,33 @@ import com.saife.dashboard.client.common.SaifeDashboardException;
 
 public class HttpMethodInvoker {
 
-	// TODO for multithreading a pool is needed
+	private static final String CHARSET = "UTF-8";
+
+	// TODO for multithreading a pool of clients is needed
 	private static HttpClient client = HttpClientBuilder.create().build();
-	
+
 	public static <T> T invoke (Class<T>result) throws SaifeClientException, SaifeDashboardException {
 		
-		HttpRequestBase req = getHttpRequest();
-		String uri = buildUri(SaifeClientProxy.getEndpoint(), SaifeClientProxy.getParameters());
+		HttpMethodData httpMethodData = SaifeClientProxy.getHttpMethodData();
+		if (httpMethodData == null) {
+			throw new SaifeClientException("HTTP request data is not initialized.");
+		} 
+
+		HttpRequestBase req = getHttpRequest(httpMethodData.getMethod());
+		req.addHeader( new BasicHeader("Authorization", "Basic " + httpMethodData.getApiKey() ));
+		
+		String uri;
+		try {
+			uri = buildUriAndParameters(httpMethodData.getEndpoint(), req, httpMethodData.getParameters());
+		} catch (UnsupportedEncodingException ex) {
+			throw new SaifeClientException(ex.getMessage(), ex);
+		}
 		try {
 			req.setURI(new URI(uri));
 		} catch (URISyntaxException ex) {
 			throw new SaifeClientException("Could not make URI from: " + uri, ex);
 		}
-		
+
 		try {
 			String responseBody = client.execute(req, new ResponseHandler<String>() {
 				@Override
@@ -68,9 +90,8 @@ public class HttpMethodInvoker {
 		} 
 	}
 
-	private static HttpRequestBase getHttpRequest() throws SaifeClientException {
-		if (SaifeClientProxy.getHttpMethod() != null) {
-			switch (SaifeClientProxy.getHttpMethod()) {
+	private static HttpRequestBase getHttpRequest(HttpMethod httpMethod) throws SaifeClientException {
+			switch (httpMethod) {
 			case GET:
 				return new HttpGet();
 			case POST:
@@ -80,53 +101,52 @@ public class HttpMethodInvoker {
 			case DELETE:
 				return new HttpDelete();
 			default:
-				throw new SaifeClientException("Unsupported HTTP method: " + SaifeClientProxy.getHttpMethod().name());
+				throw new SaifeClientException("Unsupported HTTP method: " + httpMethod.name());
 			}
-			
-		} 
-		throw new SaifeClientException("HTTP method is not specified.");
 	}
 
-	private static String encodeParameter(String param) {
-		try {
-			return URLEncoder.encode(param, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			return param;
-		}
-	}
-	
-	private static String buildUri(String uri, Map<String,Object>params) {
+	private static String buildUriAndParameters(String uri, HttpRequestBase req, Map<String,Object>params) throws UnsupportedEncodingException {
 		
 		if (uri == null || params == null) {
 			return null;
 		}
-		
+
 		for (Iterator<Map.Entry<String, Object>> it = params.entrySet().iterator(); it.hasNext(); ) {
 			Map.Entry<String, Object> entry = it.next();
 			String key = '{' + entry.getKey() + '}';
 			if (uri.contains(key)) {
-				uri = uri.replace(key, encodeParameter(entry.getValue().toString()));
+				uri = uri.replace(key, URLEncoder.encode(entry.getValue().toString(), CHARSET));
 				it.remove();
 			}
 		}
-		
+
 		if (!params.isEmpty()) {
-			boolean first = true;
-			StringBuilder sb = new StringBuilder(uri); 
-			for (Iterator<Map.Entry<String, Object>> it = params.entrySet().iterator(); it.hasNext(); ) {
-				Map.Entry<String, Object> entry = it.next();
-				if (first) {
-					first = false;
-					sb.append('?');
-				} else {
-					sb.append('&');
+			if (req instanceof HttpEntityEnclosingRequest) {
+				// PUT, POST
+				HttpEntityEnclosingRequest eeReq = (HttpEntityEnclosingRequest)req;
+				List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
+				for (Map.Entry<String, Object> entry : params.entrySet()) {
+					urlParameters.add(new BasicNameValuePair(entry.getKey(), entry.getValue().toString()));
 				}
-				sb.append(entry.getKey()).append('=').append(encodeParameter(entry.getValue().toString()));
+				eeReq.setEntity(new UrlEncodedFormEntity(urlParameters, Charset.forName(CHARSET)));
+			} else {
+				// GET, DELETE
+				boolean first = true;
+				StringBuilder sb = new StringBuilder(uri); 
+				for (Map.Entry<String, Object> entry : params.entrySet()) {
+					if (first) {
+						first = false;
+						sb.append('?');
+					} else {
+						sb.append('&');
+					}
+					sb.append(entry.getKey()).append('=').append(URLEncoder.encode(entry.getValue().toString(), CHARSET));
+				}
+				uri = sb.toString();
 			}
-			uri = sb.toString();
 		}
 
 		return uri;
 	}
-	
+
 }
