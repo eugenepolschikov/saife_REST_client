@@ -40,9 +40,7 @@ public class SaifeClientProxy implements InvocationHandler {
 	public Object invoke(Object proxy, Method proxyMethod, Object[] args) throws Throwable {
 		Method objMethod = saifeClient.getClass().getMethod(proxyMethod.getName(), proxyMethod.getParameterTypes());
 		SaifeEndpoint methodEndpoint = objMethod.getAnnotation(SaifeEndpoint.class);
-
 		HttpMethodData httpMethodData = new HttpMethodData();
-
 		if (commonEndpoint != null && methodEndpoint != null) {
 			httpMethodData.setEndpoint(commonEndpoint.endpoint() + methodEndpoint.endpoint());
 			httpMethodData.setMethod(methodEndpoint.method());

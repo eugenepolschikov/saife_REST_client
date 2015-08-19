@@ -57,6 +57,7 @@ public class HttpMethodInvoker {
 //		RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
 //		req.setConfig(config);
 
+
 		String uri;
 		try {
 			uri = buildUriAndParameters(httpMethodData.getEndpoint(), req, httpMethodData.getParameters());
