@@ -1,7 +1,6 @@
 package com.saife.dashboard.client.certificate;
 
 import java.util.Date;
-import java.util.List;
 
 import com.saife.dashboard.client.common.AbstractSaifeObject;
 import com.saife.dashboard.client.common.SaifeObjectType;
@@ -10,30 +9,31 @@ public class SaifeCertificate extends AbstractSaifeObject {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<String>capabilities;
-    private String		certificateLeaf;
-    private Date		createTime;
-    private String		endpointId;
-    private Date		expireTime;
-    private String		fingerprint;
-    private String		licenseId;
-    private SaifeManager 	manager;
-    private String		managerId;
-    private Date		modifyTime;
-    private String		organizationId;
-    private Date		revokeTime;
-    private String		name;
-    private String		userId;
-    
-    public SaifeCertificate() {
+	
+	private String		capabilities;
+	private String		certificateLeaf;
+	private Date		createTime;
+	private String		endpointId;
+	private Date		expireTime;
+	private String		fingerprint;
+	private String		licenseId;
+	private SaifeManager manager;
+	private String		managerId;
+	private Date		modifyTime;
+	private String		organizationId;
+	private Date		revokeTime;
+	private String		name;
+	private String		userId;
+
+	public SaifeCertificate() {
 		super();
 		setObject(SaifeObjectType.certificate);
 	}
-	public List<String> getCapabilities() {
+	public String getCapabilities() {
 		return capabilities;
 	}
-	public void setCapabilities(List<String> capabilities) {
-		this.capabilities = capabilities;
+	public void setCapabilities(String capabilities) {
+		System.out.println(capabilities);
 	}
 	public String getCertificateLeaf() {
 		return certificateLeaf;
@@ -113,5 +113,13 @@ public class SaifeCertificate extends AbstractSaifeObject {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-    
+	@Override
+	public String toString() {
+		return "SaifeCertificate [capabilities=" + capabilities + ", certificateLeaf=" + certificateLeaf
+				+ ", createTime=" + createTime + ", endpointId=" + endpointId + ", expireTime=" + expireTime
+				+ ", fingerprint=" + fingerprint + ", licenseId=" + licenseId + ", manager=" + manager + ", managerId="
+				+ managerId + ", modifyTime=" + modifyTime + ", organizationId=" + organizationId + ", revokeTime="
+				+ revokeTime + ", name=" + name + ", userId=" + userId + "]";
+	}
+
 }

@@ -7,10 +7,10 @@ public class SaifeUser extends AbstractSaifeObject {
 
 	private static final long serialVersionUID = 1L;
 
-    private String firstName;
-    private boolean disabled;
-    private String lastName;
-    private String profileImageUrl;
+	private String firstName;
+	private boolean disabled;
+	private String lastName;
+	private String profileImageUrl;
 	
 	public SaifeUser() {
 		super();

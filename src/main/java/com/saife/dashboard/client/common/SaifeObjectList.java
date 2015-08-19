@@ -1,9 +1,12 @@
 package com.saife.dashboard.client.common;
 
+import com.google.gson.annotations.SerializedName;
+
 public abstract class SaifeObjectList extends AbstractSaifeObject {
 
 	private static final long serialVersionUID = 1L;
 
+	@SerializedName("has_more")
 	private boolean hasMore;
 
 	public boolean isHasMore() {

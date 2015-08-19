@@ -43,4 +43,11 @@ public class SaifeManager extends AbstractSaifeObject {
 	public void setFingerprint(String fingerprint) {
 		this.fingerprint = fingerprint;
 	}
+
+	@Override
+	public String toString() {
+		return "SaifeManager [certificateChain=" + certificateChain + ", createTime=" + createTime + ", expireTime="
+				+ expireTime + ", fingerprint=" + fingerprint + "]";
+	}
+	
 }

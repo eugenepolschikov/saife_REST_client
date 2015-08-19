@@ -62,7 +62,7 @@ public class SaifeCertificateClientMockImpl extends AbstractSaifeClient implemen
 
 	private SaifeCertificate createMockCertificateDTO() {
 		SaifeCertificate res = new SaifeCertificate();
-		res.setCapabilities(Arrays.asList("com::saife::crypto::capability::AES_128_BIT","com::saife::demo::echo"));
+		res.setCapabilities(Arrays.asList("com::saife::crypto::capability::AES_128_BIT","com::saife::demo::echo").toString());
 		res.setCertificateLeaf("MIIBuzCCAUCgAwIBAgIGAU8/miu7MAoGCCqGSM49BAMCMCExHzAdBgNVBAMTFmRhc2hib2FyZC5zYWlmZWluYy5jb20wHhcNMTUwODE3MjEwMDAwWhcNMTUxMDA4MjEwMDAwWjASMRAwDgYDVQQDEwdkZW1vQXBwMHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEh8vDMvdPPLDlSeH5GRlC7KNf6DP6Cksdy35chIgAfngTa5bZs48TQFmyZtH65pTCLEOdoqfil8shy6o95tOqmzxI3GkTrb8aeBM7w6218Va2HtzjamzWVPcvi9Txj69Qo1YwVDBSBggrBgEFBQcDMARGMEQwD2EDAgEBYgMBAQBjAwEBADAPYQMCAQRiAwEBAGMDAQEAMA9hAwIBAmIDAQEAYwMBAQAwD2EDAgEDYgMBAQBjAwEBADAKBggqhkjOPQQDAgNpADBmAjEA1+MSkZmK04f+zO4gOVNI0zc7WN5GGzVACfJz80RcisfN/Z9tKE9o3BTQA9hArEmHAjEAvWsvVrOWiITsxqq8S0rM/nZHFajt0Ni8ivwRiR1VyunZJr0tAAbwheziYmZqPE0f");
 		res.setCreateTime(parseDate("2015-08-10T09:31:02.000+0000"));
 		res.setEndpointId("end_00003Y0");
