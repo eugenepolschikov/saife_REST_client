@@ -43,4 +43,10 @@ public class SaifeEndpoint extends AbstractSaifeObject {
 		this.certificates = certificates;
 	}
 
+	@Override
+	public String toString() {
+		return "SaifeEndpoint [id=" + id + ", object=" + object + ", name=" + name + ", user=" + user
+				+ ", certificates=" + certificates + "]";
+	}
+
 }

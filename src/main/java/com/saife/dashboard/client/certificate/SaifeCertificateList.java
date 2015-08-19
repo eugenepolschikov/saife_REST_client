@@ -20,8 +20,7 @@ public class SaifeCertificateList extends SaifeObjectList {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder("SaifeCertificateList [\nhas_more=" + isHasMore() + ",\nId=" + getId() +
-				",\nobject=" + getObject() + ",\ndata=[");
+		StringBuilder sb = new StringBuilder("SaifeCertificateList [object=" + object + ", hasMore=" + hasMore + ", data=[");
 		if (data != null) {
 			for (SaifeCertificate sc : data) {
 				sb.append('\n').append(sc);

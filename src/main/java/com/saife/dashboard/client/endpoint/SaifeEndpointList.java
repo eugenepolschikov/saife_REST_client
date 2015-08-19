@@ -18,4 +18,18 @@ public class SaifeEndpointList extends SaifeObjectList {
 		this.data = data;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("SaifeEndpointList [object=" + object + ", hasMore=" + hasMore + ", data=[");
+		if (data != null) {
+			for (SaifeEndpoint se : data) {
+				sb.append('\n').append(se);
+			}
+		}
+		sb.append("\n]]");
+		return sb.toString();
+	}
+	
+	
+
 }

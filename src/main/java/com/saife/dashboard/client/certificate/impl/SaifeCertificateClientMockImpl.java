@@ -32,12 +32,17 @@ public class SaifeCertificateClientMockImpl extends AbstractSaifeClient implemen
 	}
 
 	@Override
-	public SaifeCertificate getById(String certId) {
+	public SaifeCertificate retrieveById(String certId) {
 		return createMockCertificateDTO();
 	}
 
 	@Override
-	public SaifeCertificate getByFingerpring(String certId) {
+	public SaifeCertificate retrieveByFingerpring(String certId) {
+		return createMockCertificateDTO();
+	}
+
+	@Override
+	public SaifeCertificate revoke(String certId) {
 		return createMockCertificateDTO();
 	}
 

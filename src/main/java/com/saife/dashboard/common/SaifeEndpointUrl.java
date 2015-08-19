@@ -9,7 +9,7 @@ import com.saife.dashboard.http.HttpMethod;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface SaifeEndpoint {
+public @interface SaifeEndpointUrl {
 
 	public String endpoint();
 

@@ -46,8 +46,8 @@ public interface SaifeEndpointClient {
 
 	/**
 	 * Returns list of endpoints matched to input criteria.
-	 * @param userId
-	 * @param groupId
+	 * @param userId - user Id
+	 * @param groupId - group Id
 	 */
 	SaifeEndpointList list(String userId, String groupId)
 			throws SaifeClientException, SaifeDashboardException;

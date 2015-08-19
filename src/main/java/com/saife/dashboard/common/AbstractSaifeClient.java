@@ -4,7 +4,7 @@ public abstract class AbstractSaifeClient {
 
 	protected String apiKey;
 
-	protected AbstractSaifeClient(String apiKey) {
+	public AbstractSaifeClient(String apiKey) {
 		super();
 		this.apiKey = apiKey + ":";
 	}

@@ -3,7 +3,7 @@ package com.saife.dashboard.client;
 import com.saife.dashboard.client.certificate.SaifeCertificateClient;
 import com.saife.dashboard.client.certificate.impl.SaifeCertificateClientImpl;
 import com.saife.dashboard.client.endpoint.SaifeEndpointClient;
-import com.saife.dashboard.client.endpoint.impl.SaifeEndpointClientMockImpl;
+import com.saife.dashboard.client.endpoint.impl.SaifeEndpointClientImpl;
 import com.saife.dashboard.client.group.SaifeGroupClient;
 import com.saife.dashboard.client.group.impl.SaifeGroupClientMockImpl;
 import com.saife.dashboard.proxy.SaifeClientProxy;
@@ -29,7 +29,7 @@ public class SaifeClientFactory {
 	}
 
 	public SaifeEndpointClient getEndpointClient() {
-		return new SaifeEndpointClientMockImpl(apiKey);
+		return (SaifeEndpointClient)SaifeClientProxy.newInstance(new SaifeEndpointClientImpl(apiKey));
 	}
 
 }

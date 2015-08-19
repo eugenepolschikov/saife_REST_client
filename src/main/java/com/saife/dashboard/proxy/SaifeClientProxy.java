@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.saife.dashboard.common.AbstractSaifeClient;
-import com.saife.dashboard.common.SaifeEndpoint;
+import com.saife.dashboard.common.SaifeEndpointUrl;
 import com.saife.dashboard.common.SaifeParam;
 import com.saife.dashboard.http.HttpMethodData;
 
@@ -33,7 +33,7 @@ public class SaifeClientProxy implements InvocationHandler {
 	@Override
 	public Object invoke(Object proxy, Method proxyMethod, Object[] args) throws Throwable {
 		Method objMethod = saifeClient.getClass().getMethod(proxyMethod.getName(), proxyMethod.getParameterTypes());
-		SaifeEndpoint methodEndpoint = objMethod.getAnnotation(SaifeEndpoint.class);
+		SaifeEndpointUrl methodEndpoint = objMethod.getAnnotation(SaifeEndpointUrl.class);
 		HttpMethodData httpMethodData = new HttpMethodData();
 		if (methodEndpoint != null) {
 			httpMethodData.setEndpoint(methodEndpoint.endpoint());
@@ -44,7 +44,7 @@ public class SaifeClientProxy implements InvocationHandler {
 				Annotation[] ann = annotations[i];
 				for (int j=0; j<ann.length; j++) {
 					if (ann[j] instanceof SaifeParam && args[i] != null) {
-						params.put(((SaifeParam)ann[j]).name(), args[i]);
+						params.put(((SaifeParam)ann[j]).value(), args[i]);
 					}
 				}
 			}

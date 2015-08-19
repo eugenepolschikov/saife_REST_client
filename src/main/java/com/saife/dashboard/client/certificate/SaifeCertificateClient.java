@@ -46,7 +46,7 @@ public interface SaifeCertificateClient {
 	 *
 	 * @param certId - (required) certificate Id
 	 */
-	SaifeCertificate getById(String certId)
+	SaifeCertificate retrieveById(String certId)
 			throws SaifeClientException, SaifeDashboardException;
 
 	/**
@@ -54,14 +54,22 @@ public interface SaifeCertificateClient {
 	 *
 	 * @param fingerprint - (required) certificate fingerprint
 	 */
-	SaifeCertificate getByFingerpring(String fingerprint)
+	SaifeCertificate retrieveByFingerpring(String fingerprint)
 			throws SaifeClientException, SaifeDashboardException;
 
 	/**
 	 * Revokes certificate by Id.
 	 *
 	 * @param certId - (required) certificate Id
-	 * @param revokeTime - (optional) The revoke timestamp; if not specified than a default will be used
+	 */
+	SaifeCertificate revoke(String certId)
+			throws SaifeClientException, SaifeDashboardException;
+
+	/**
+	 * Revokes certificate by Id.
+	 *
+	 * @param certId - certificate Id
+	 * @param revokeTime - The revoke timestamp; if not specified than a default will be used
 	 */
 	SaifeCertificate revoke(String certId, Date revokeTime)
 			throws SaifeClientException, SaifeDashboardException;
